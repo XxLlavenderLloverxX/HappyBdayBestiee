@@ -11544,6 +11544,29 @@ html body .deep-thoughts-release-btn:disabled {
 }
 </style>
 
+
+<style id="taskbar-green-rectangle-final-fix">
+/* The previous global autumn surface rule accidentally painted the taskbar
+   child groups as separate green blocks. Keep the left group transparent so
+   the selected wallpaper's taskbar is one continuous surface. */
+.desktop-taskbar .taskbar-left-group {
+  background:transparent!important; background-color:transparent!important;
+  border:0!important; box-shadow:none!important;
+}
+/* Use a warm charcoal/sage-tinted tray for autumn, not a bright green tile. */
+.desktop-container.theme-rose .desktop-taskbar .taskbar-tray {
+  background:rgba(42,48,39,.78)!important;
+  border:1px solid rgba(151,133,104,.42)!important;
+  color:#e0d5c1!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important;
+}
+.desktop-container.theme-rose .desktop-taskbar .sweet-message-btn,
+.desktop-container.theme-rose .desktop-taskbar .sound-toggle-btn,
+.desktop-container.theme-rose .desktop-taskbar .wallpaper-theme-btn,
+.desktop-container.theme-rose .desktop-taskbar #clockDisplay { color:#e0d5c1!important; }
+.desktop-container.theme-rose .desktop-taskbar .tray-line-icon::before,
+.desktop-container.theme-rose .desktop-taskbar .tray-line-icon::after { border-color:#c1ad8d!important; }
+</style>
 </body>
 </html>
 
