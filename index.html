@@ -6,6 +6,7 @@
     <title>Cozy Life</title>
     <style>#sharedJournalWindow{display:none}</style>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Itim&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -252,7 +253,13 @@
             color: #ff9ebb;
         }
 
-        .folder-front {
+        /* The desktop folder keeps its original simple paper treatment; the custom illustration is taskbar-only. */
+.journal-folder-paper{background:linear-gradient(145deg,#fffdfb,#f8edf2)!important;border:1px solid #e7cbd7!important;border-radius:6px!important;box-shadow:0 2px 4px rgba(90,55,75,.10)!important}
+.journal-desktop-paper-mark{display:flex;flex-direction:column;gap:3px;width:19px;padding:4px 3px;border-left:2px solid #c98eaa;border-radius:2px}
+.journal-desktop-paper-mark i{display:block;height:2px;border-radius:2px;background:#d8b4c4}
+.journal-desktop-paper-mark i:nth-child(2){width:80%}.journal-desktop-paper-mark i:nth-child(3){width:62%}
+
+.folder-front {
             position: absolute;
             width: 50px;
             height: 26px;
@@ -5211,7 +5218,7 @@ html body .deep-thoughts-release-btn:disabled {
                 <div class="folder-art">
                     <div class="folder-tab"></div>
                     <div class="folder-back"></div>
-                    <div class="folder-paper">📖</div>
+                    <div class="folder-paper journal-folder-paper" aria-hidden="true"><span class="journal-desktop-paper-mark"><i></i><i></i><i></i></span></div>
                     <div class="folder-front"></div>
                     <div class="sparkle sparkle-1">✨</div>
                     <div class="sparkle sparkle-2">✨</div>
@@ -5336,7 +5343,7 @@ html body .deep-thoughts-release-btn:disabled {
                     <span class="taskbar-icon-symbol comfort-taskbar-envelope" aria-hidden="true"></span> birthday gift o.o
                 </button>
                 <button class="taskbar-icon-btn" id="taskbarSharedJournal" onclick="toggleSharedJournalFromTaskbar()">
-                    <span class="taskbar-icon-symbol custom-taskbar-icon" aria-hidden="true">📖</span> our little corner
+                    <span class="taskbar-icon-symbol custom-taskbar-icon journal-taskbar-mark" aria-hidden="true"><svg class="journal-icon-art" viewBox="0 0 64 64" role="img" aria-label="Illustrated journal" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="journalCoverGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#98758f"/><stop offset="1" stop-color="#684b69"/></linearGradient><linearGradient id="journalPageGrad" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffdf8"/><stop offset="1" stop-color="#f2e5dc"/></linearGradient></defs><path d="M14 10.5c0-2 1.6-3.5 3.6-3.5h31.1c2 0 3.6 1.6 3.6 3.6v42.1c0 1.6-1.3 2.8-2.9 2.8H17.1c-1.7 0-3.1-1.4-3.1-3.1z" fill="url(#journalPageGrad)" stroke="#c7aeb4" stroke-width="1.4"/><path d="M10 13.5c0-2 1.6-3.5 3.6-3.5h31.1c2 0 3.6 1.6 3.6 3.6v40.1c0 1.6-1.3 2.8-2.9 2.8H13.1c-1.7 0-3.1-1.4-3.1-3.1z" fill="url(#journalCoverGrad)" stroke="#59415f" stroke-width="1.8"/><path d="M17 15.5h25.8v34.8H17z" fill="none" stroke="#d9bdcb" stroke-opacity=".65" stroke-width=".8"/><path d="M19.5 21h19M19.5 25h19M19.5 29h15" stroke="#ead8e2" stroke-width="1.1" stroke-linecap="round" opacity=".72"/><path d="M46.5 8.5v43.2l-4.1-3.4-4.1 3.4V8.5c0-1.4 1.1-2.5 2.5-2.5H44c1.4 0 2.5 1.1 2.5 2.5Z" fill="#e9a9c2" stroke="#b87998" stroke-width="1.2"/><path d="M42.4 8v11.5" stroke="#fff0f5" stroke-width="1.2" stroke-linecap="round"/><path d="M29.2 38.5c-2.7-3.2-6.2-.2-4.1 2.4 1.1 1.4 4.1 3.5 4.1 3.5s3-2.1 4.1-3.5c2.1-2.6-1.4-5.6-4.1-2.4Z" fill="#efb4c8" stroke="#f8dce6" stroke-width=".8"/><path d="m52.5 17 1.2 2.8 2.8 1.2-2.8 1.2-1.2 2.8-1.2-2.8-2.8-1.2 2.8-1.2Z" fill="#f5d5a6" stroke="#d5ae86" stroke-width=".7"/><path d="M8 48.5c2.2 1.2 3.3 3.1 3.4 5.4" fill="none" stroke="#c58ca4" stroke-width="1.4" stroke-linecap="round"/></svg></span> our little corner
                 </button>
                 <button class="taskbar-icon-btn" id="taskbarDeepThoughts" onclick="toggleDeepThoughtsFromTaskbar()">
                     <span class="taskbar-icon-symbol custom-taskbar-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M23.7 21.8A11.3 11.3 0 0 1 10.2 8.3 11.7 11.7 0 1 0 23.7 21.8Z" fill="#c6b4ee" stroke="#8f7bb8" stroke-width="1.5"/><path d="m23 6 .8 2.2L26 9l-2.2.8L23 12l-.8-2.2L20 9l2.2-.8Z" fill="#f4c2dc"/></svg></span> deep thoughts
@@ -5469,21 +5476,53 @@ html body .deep-thoughts-release-btn:disabled {
         <div class="window-titlebar" id="sharedJournalTitlebar">
             <div class="shared-journal-title-copy"><span>our little corner</span></div>
             <div class="window-controls">
+                <button class="window-btn journal-settings-toggle" id="journalSettingsToggle" type="button" aria-label="Journal settings" aria-expanded="false" title="Journal settings">⚙</button>
                 <button class="window-btn" onclick="minimizeSharedJournal()" aria-label="Minimize our little corner">_</button>
                 <button class="window-btn" onclick="closeSharedJournal()" aria-label="Close our little corner">×</button>
             </div>
         </div>
+        <aside class="journal-settings-drawer" id="journalSettingsDrawer" aria-label="Journal settings" aria-hidden="true">
+            <div class="journal-settings-heading">little settings <span>✧</span></div>
+            <label for="journalFontColor">handwriting color</label>
+            <input id="journalFontColor" type="color" value="#765564" aria-label="Choose handwriting color">
+            <div class="journal-color-presets" aria-label="15 vintage handwriting colors">
+                <button type="button" data-journal-color="#765564" style="--swatch:#765564" aria-label="Vintage mauve"></button>
+                <button type="button" data-journal-color="#665f79" style="--swatch:#665f79" aria-label="Dusty lavender"></button>
+                <button type="button" data-journal-color="#8a6250" style="--swatch:#8a6250" aria-label="Warm sepia"></button>
+                <button type="button" data-journal-color="#9a6172" style="--swatch:#9a6172" aria-label="Antique rose"></button>
+                <button type="button" data-journal-color="#526d68" style="--swatch:#526d68" aria-label="Muted sage"></button>
+                <button type="button" data-journal-color="#a66f58" style="--swatch:#a66f58" aria-label="Terracotta"></button>
+                <button type="button" data-journal-color="#7b6652" style="--swatch:#7b6652" aria-label="Soft walnut"></button>
+                <button type="button" data-journal-color="#8b7182" style="--swatch:#8b7182" aria-label="Heather mauve"></button>
+                <button type="button" data-journal-color="#6f7770" style="--swatch:#6f7770" aria-label="Eucalyptus"></button>
+                <button type="button" data-journal-color="#a87968" style="--swatch:#a87968" aria-label="Faded clay"></button>
+                <button type="button" data-journal-color="#6e5960" style="--swatch:#6e5960" aria-label="Plum brown"></button>
+                <button type="button" data-journal-color="#8b8062" style="--swatch:#8b8062" aria-label="Antique olive"></button>
+                <button type="button" data-journal-color="#9b7b83" style="--swatch:#9b7b83" aria-label="Dusty rosewood"></button>
+                <button type="button" data-journal-color="#657b7a" style="--swatch:#657b7a" aria-label="Weathered teal"></button>
+                <button type="button" data-journal-color="#b18468" style="--swatch:#b18468" aria-label="Old paper brown"></button>
+            </div>
+            <label for="journalFontFamily" class="journal-font-label">handwriting style</label>
+            <select id="journalFontFamily" aria-label="Choose handwriting font">
+                <option value="Caveat">Caveat — flowing</option>
+                <option value="Itim">Itim — soft</option>
+                <option value="Patrick Hand">Patrick Hand — neat</option>
+                <option value="Kalam">Kalam — handwritten</option>
+                <option value="Shadows Into Light">Shadows Into Light — delicate</option>
+            </select>
+            <p>Your choices are saved on this device.</p>
+        </aside>
         <div class="shared-journal-body">
             <div class="journal-book-scene" id="journalBookScene">
                 <div class="journal-book is-closed" id="journalBook">
                     <div class="journal-book-pages" aria-label="Open journal pages">
                         <div class="journal-page journal-page-left">
                             <div class="journal-page-date" id="journalDateLeft"></div>
-                            <textarea class="journal-page-writing" id="journalWritingLeft" aria-label="Write on the left journal page" spellcheck="true"></textarea>
+                            <div class="journal-page-writing" id="journalWritingLeft" role="textbox" aria-label="Write on the left journal page" aria-multiline="true" contenteditable="true" spellcheck="true"></div>
                         </div>
                         <div class="journal-page journal-page-right">
                             <div class="journal-page-date" id="journalDateRight"></div>
-                            <textarea class="journal-page-writing" id="journalWritingRight" aria-label="Write on the right journal page" spellcheck="true"></textarea>
+                            <div class="journal-page-writing" id="journalWritingRight" role="textbox" aria-label="Write on the right journal page" aria-multiline="true" contenteditable="true" spellcheck="true"></div>
                         </div>
                     </div>
                     <div class="journal-flip-sheet journal-flip-one"></div>
@@ -6135,11 +6174,14 @@ html body .deep-thoughts-release-btn:disabled {
 
         function centerWindowOnFirstOpen(win) {
             if (!win || win.dataset.initialized) return;
-            // Measure after the window is displayed, then place its actual box at screen centre.
+            // The shared journal has a translate(-50%,-50%) default. Remove it
+            // before measuring, then calculate its top-left from its actual size.
             win.style.transform = 'none';
             const rect = win.getBoundingClientRect();
-            win.style.left = Math.max(10, (window.innerWidth - rect.width) / 2) + 'px';
-            win.style.top = Math.max(10, (window.innerHeight - rect.height) / 2) + 'px';
+            const left = Math.max(10, (window.innerWidth - rect.width) / 2);
+            const top = Math.max(10, (window.innerHeight - rect.height) / 2);
+            win.style.left = left + 'px';
+            win.style.top = top + 'px';
             win.dataset.initialized = 'true';
         }
 
@@ -7064,25 +7106,26 @@ html body .deep-thoughts-release-btn:disabled {
         }
 
         const rawPlaylist = [
-            { title: "Oh My Little Baby Boy 𖹭", artist: "Babe", url: "https://www.dropbox.com/scl/fi/9bodmntwbhxwj8uwvqhvr/Babe-Oh-My-Little-Baby-Boy-SPEED-UP.mp3?rlkey=irm5ljhbghsl3s71gie9d712v&st=pfnev91z&dl=1", cover: "https://i.postimg.cc/Qt4hz1b3/image.jpg", volume: 0.9 },
-            { title: "I Really Like You ᰔ", artist: "Carly Rae Jepsen", url: "https://www.dropbox.com/scl/fi/6cj9plawhj48kxxwdo84b/Nightcore-I-Really-Like-You.mp3?rlkey=ibea8c00cbpl3pcvisphgegws&st=m9gyssa8&dl=1", cover: "https://i.postimg.cc/1ttGvSHK/download-(1).jpg", volume: 0.9 },
-            { title: "Love You Like a Love Song ♡", artist: "Selena Gomez & The Scene", url: "https://www.dropbox.com/scl/fi/1xmyptf6gcmlfdclne7xm/Nightcore-Love-You-Like-a-Love-Song-Lyrics.mp3?rlkey=5hc89minc6h7jisw7ekpl2d1r&st=ldxrvk85&dl=1", cover: "https://i.postimg.cc/JzVVd8H6/download-(5).jpg", volume: 0.9 },
-            { title: "Kiss Me Thru the Phone ꨄ︎", artist: "Soulja Boy ft. Sammie", url: "https://www.dropbox.com/scl/fi/hm6debmcrbyz5a63fta1t/Nightcore-Kiss-me-thru-the-phone.mp3?rlkey=iy65hlf4ii6xcod7032qxf2v1&st=ywo5bttd&dl=1", cover: "https://i.postimg.cc/FzKPzJ3p/download-(2).jpg", volume: 0.9 },
-            { title: "glitter ✧", artist: "lexycat", url: "https://www.dropbox.com/scl/fi/1obqi8wtjm4oa246sesw9/glitter-lexycat-speed-up.mp3?rlkey=k2mcm8jof35vp1dxz49ioruwz&st=pqwrfdlr&dl=1", cover: "https://i.postimg.cc/mrV33kQP/download-(4).jpg", volume: 1 },
-            { title: "over tonight 𐭩", artist: "RomancePlanet", url: "https://www.dropbox.com/scl/fi/fb333wdzt3vzol4omb4y3/ROMANCEPLANET-OVER-TONIGHT-OFFICIAL-AUDIO.mp3?rlkey=58j3qmom9fdjv1nxvzkbcbd1r&st=hkep6uoi&dl=1", cover: "https://i.postimg.cc/rsHh7F3d/download-(17).jpg", volume: 0.9 },
-            { title: "Love Potions ♡", artist: "6arelyhuman", url: "https://www.dropbox.com/scl/fi/eo28vrbzxu02m8jvfxqzv/Love-Potions-6arelyhuman-Remix.mp3?rlkey=jnk1vbhftj51kh7m90x6k9a6h&st=tdm1juyk&dl=1", cover: "https://i.postimg.cc/rsDM2snp/download-(8).jpg", volume: 0.9 },
-            { title: "twirl 𐙚", artist: "noturtype", url: "https://www.dropbox.com/scl/fi/59310ojmi856683rgx6vz/twirl.mp3?rlkey=zctcpb09d7vzo1j27ikew2q0s&st=oz6jyitu&dl=1", cover: "https://i.postimg.cc/9MFc1JyL/download-(16).jpg", volume: 0.9 },
-            { title: "wutiwant . . ✧", artist: "saraunh0ly", url: "https://www.dropbox.com/scl/fi/woykzrrz2goiyiexmipnq/saraunh0ly-wutiwant-Nightcore.mp3?rlkey=q9lk74e7msele04txfdtg1ayu&st=96k1kacx&dl=1", cover: "https://i.postimg.cc/NFQYLbj1/image.jpg", volume: 0.9 },
-            { title: "Take Me to Heaven 𓆩♡𓆪", artist: "CARA", url: "https://www.dropbox.com/scl/fi/av000ukafa6laimvgp6x5/Take-me-to-heaven-nightcore-sped-up.mp3?rlkey=yu50y0uecfgfnk7fruhd49hmh&st=craoa1iq&dl=1", cover: "https://i.postimg.cc/pr0b0FDV/download-(18).jpg", volume: 0.9 },
-            { title: "Little Kandi Raver ♡", artist: "S3RL feat. Sara", url: "https://www.dropbox.com/scl/fi/dvayjtvbyi5yse6fckf08/Little-Kandi-Raver-2012-S3RL-feat-Sara.mp3?rlkey=fbfxtp64wimdobxabetv5gu3h&st=m3kxkva7&dl=1", cover: "https://i.postimg.cc/90CQCp7Z/artworks-fvii2Cggx2p4Fpf-H-l-Dl-BNg-t500x500.jpg", volume: 0.9 },
-            { title: "R4V3 B0Y 𐙚", artist: "S3RL feat. Krystal", url: "https://www.dropbox.com/scl/fi/ndymo55dzil05mznpr89a/R4V3-B0Y-S3RL-feat-Krystal.mp3?rlkey=zixy43f6c1vbgpzkqbtey7410&st=67682b0g&dl=1", cover: "https://i.postimg.cc/L5yKy1z6/breakcore.jpg", volume: 0.9 },
-            { title: "Dam Dadi Do ✧", artist: "Nightcore", url: "https://www.dropbox.com/scl/fi/odqvt54jndqmhcoty17dy/Nightcore-Dam-Dadi-Do.mp3?rlkey=1xlirvfqp8ruhwq5b1jgyrtpl&st=albenwfl&dl=1", cover: "https://i.postimg.cc/j28087zx/Nightcore.jpg", volume: 0.9 },
-            { title: "Exitin' ✧", artist: "Cece Natalie", url: "https://www.dropbox.com/scl/fi/qgjtj7s5z7qj3y5rukkhp/Exitin-Cece-Natalie-sped-up-nightcore-reverb.mp3?rlkey=zquaol3mf1vvclvjm8l9kw7hw&st=eum8cgxk&dl=1", cover: "https://i.postimg.cc/pLbb1v50/1119989001056808220.jpg", volume: 0.9 },
-            { title: "Vacation Bible School ♡", artist: "Ayesha Erotica", url: "https://www.dropbox.com/scl/fi/cvdljukp38ohf44k5r0a6/Vacation-Bible-School.mp3?rlkey=gyv8c24fxrwn3fuhbbshbxeuy&st=gxmmmb6f&dl=1", cover: "https://i.postimg.cc/PfK9HdYM/Love-love-love.jpg", volume: 0.9 },
-            { title: "Stereo Love ✧", artist: "Edward Maya & Vika Jigulina", url: "https://www.dropbox.com/scl/fi/x75q57xasfa7hrlk5vkc7/Nightcore-Stereo-Love.mp3?rlkey=sj3qzv9rytbhn7d00rznxsajz&st=6kmiit28&dl=1", cover: "https://i.postimg.cc/NFKBvFJ2/download-(7).jpg", volume: 0.9 },
-            { title: "My Heart Beats Like a Drum ᢉ", artist: "A Touch of Class", url: "https://www.dropbox.com/scl/fi/2yi5yrqaq6dh2s4ux2k90/Nightcore-My-Heart-Beats-Like-A-Drum.mp3?rlkey=uy9coi9jzgfjf8szjb16csdm6&st=2k6wc68q&dl=1", cover: "https://i.postimg.cc/g0yPqvtk/shy-cat.jpg", volume: 0.9 },
-            { title: "Castle in the Sky ⋆", artist: "DJ Satomi", url: "https://www.dropbox.com/scl/fi/iyuzzy14e27gjtnmpvy54/Nightcore-Castle-In-The-Sky.mp3?rlkey=pakysdayqcr3ricz8551gz318&st=9b90m6pd&dl=1", cover: "https://i.postimg.cc/br48yPW3/607634174775211918.avif", volume: 0.9 },
-            { title: "Häschenparty ୨୧", artist: "Schnuffel", url: "https://www.dropbox.com/scl/fi/45b64hy5bvkefzduc5g2a/Jamba-Schnuffel-Full-Track-H-schenparty-DE.mp3?rlkey=xfcu45domexsy78kygwa90f3q&st=3nhytl1y&dl=1", cover: "https://i.postimg.cc/SRnkbRTs/awhhhh.jpg", volume: 0.9 }
+            { title: "Brand New City", artist: "Mitski", url: "https://www.dropbox.com/scl/fi/pjzcan75xbljwue92m32k/Mitski-Brand-New-City-Official-Audio.mp3?rlkey=az55yltjegbqshm9he4ze2fqp&st=86dm0puo&dl=1", cover: "https://i.postimg.cc/2ygmkYMb/download-(6).jpg", volume: 0.9 },
+            { title: "Apocalypse", artist: "Cigarettes After Sex", url: "https://www.dropbox.com/scl/fi/4ewk7ukew3wv8zrjlwlci/Apocalypse-Cigarettes-After-Sex.mp3?rlkey=woln9a6w4k7plgwtcn1opzrmo&st=2ejlkutx&dl=1", cover: "https://i.postimg.cc/RFsKJjcX/download-(8).jpg", volume: 0.9 },
+            { title: "Older", artist: "Isabel LaRosa", url: "https://www.dropbox.com/scl/fi/yidxmthao0z2q8ezfzn9d/Isabel-LaRosa-older-Audio.mp3?rlkey=wvvgb634x6eiye4iyg55acmri&st=6zlpo6nd&dl=1", cover: "https://i.postimg.cc/0QMDmVZT/download-(9).jpg", volume: 0.9 },
+            { title: "Sunsetz", artist: "Cigarettes After Sex", url: "https://www.dropbox.com/scl/fi/lwc0hsf3ohe6f7g4egnw5/Sunsetz-Cigarettes-After-Sex.mp3?rlkey=x6ip9sfpw81ziuc3kbx5040vp&st=gqqdog8z&dl=1", cover: "https://i.postimg.cc/QMSWvRnV/Osamu-Dazai-Aesthetic.jpg", volume: 0.9 },
+            { title: "Cry", artist: "Cigarettes After Sex", url: "https://www.dropbox.com/scl/fi/7xg7dsmagn7f07w6yozoo/Cry-Cigarettes-After-Sex.mp3?rlkey=ubik954hznpv1wifvzluetleh&st=aivfod9b&dl=1", cover: "https://i.postimg.cc/FFwGPLLJ/𝔀𝓱𝓪𝓽-𝓪-𝓿𝓲𝓮𝔀.jpg", volume: 0.9 },
+            { title: "I Wanna Be Yours", artist: "Arctic Monkeys", url: "https://www.dropbox.com/scl/fi/um62s3rw9gctuywj7y6l4/I-Wanna-Be-Yours.mp3?rlkey=s0t5bjy4p0r3wthg549qu40jp&st=f5mo5hcd&dl=1", cover: "https://i.postimg.cc/GhrTh3w0/download-(10).jpg", volume: 0.9 },
+            { title: "Sweater Weather", artist: "The Neighbourhood", url: "https://www.dropbox.com/scl/fi/6019dvjmk0ngnmp638knd/The-Neighbourhood-Sweater-Weather-Lyrics.mp3?rlkey=rfjem9ui32bsweqfhqcbhwwjp&st=pg32gvei&dl=1", cover: "https://i.postimg.cc/Bn6phBvL/download-(4).jpg", volume: 0.9 },
+            { title: "A Little Death", artist: "The Neighbourhood", url: "https://www.dropbox.com/scl/fi/5gdkdju6fkw88q8qyirm6/The-Neighbourhood-A-Little-Death-Lyrics.mp3?rlkey=b7rrommb342yfr58fseiq0ioa&st=k024l5io&dl=1", cover: "https://i.postimg.cc/G2YqF3m8/download-(2).jpg", volume: 0.9 },
+            { title: "Daddy Issues (Syd Remix)", artist: "The Neighbourhood ft. Syd", url: "https://www.dropbox.com/scl/fi/4ebgnn00omlvg0urvlavw/The-Neighbourhood-Syd-Daddy-Issues-Remix-Official-Audio.mp3?rlkey=6tuqzjdgw52ddxwxcyxkz6wn2&st=6qt6h8f6&dl=1", cover: "https://i.postimg.cc/90bPbD5n/download-(5).jpg", volume: 0.9 },
+            { title: "Do I Wanna Know?", artist: "Arctic Monkeys", url: "https://www.dropbox.com/scl/fi/ty4h2oyfjhn3ap5ceoo1u/Arctic-Monkeys-Do-I-Wanna-Know_-Official-Video.mp3?rlkey=tgpluuxbm6ln1v32amllgup6a&st=yj1vhd4a&dl=1", cover: "https://i.postimg.cc/sf4JsNQW/download-(6).jpg", volume: 0.9 },
+            { title: "505", artist: "Arctic Monkeys", url: "https://www.dropbox.com/scl/fi/wh1hc0bw97nmef9lje3u9/Arctic-Monkeys-505.mp3?rlkey=kxmr2q769m8s1hkvdjdlaascb&st=49xkgt2r&dl=1", cover: "https://i.postimg.cc/yYJWvJH4/kusariama-ig.jpg", volume: 0.9 },
+            { title: "Why'd You Only Call Me When You're High?", artist: "Arctic Monkeys", url: "https://www.dropbox.com/scl/fi/demrtvdjzrah0g336sg0z/Arctic-Monkeys-Why-d-You-Only-Call-Me-When-You-re-High_.mp3?rlkey=ey6gc5cnt7390c3t4bb3xx0ne&st=3tqlxz21&dl=1", cover: "https://i.postimg.cc/SsJj3jMP/download-(7).jpg", volume: 0.9 },
+            { title: "No. 1 Party Anthem", artist: "Arctic Monkeys", url: "https://www.dropbox.com/scl/fi/8w1esl5wsrqwawrtb4rco/No.-1-Party-Anthem.mp3?rlkey=9iabcq5w0j7aoryf98on3ttna&st=tb0qjbvh&dl=1", cover: "https://i.postimg.cc/7ZwhDKz6/here-again.jpg", volume: 0.9 },
+            { title: "i'm yours", artist: "Isabel LaRosa", url: "https://www.dropbox.com/scl/fi/28a9a14antcjww1ybit62/Isabel-LaRosa-i-m-yours-Audio.mp3?rlkey=f7vvg8bclobk2xy47foxsc59p&st=ezmarms5&dl=1", cover: "https://i.postimg.cc/507brL3f/Anime-Aesthetic.jpg", volume: 0.9 },
+            { title: "Eyes Don't Lie", artist: "Isabel LaRosa", url: "https://www.dropbox.com/scl/fi/verixbxs7eb9olourilx2/Isabel-LaRosa-eyes-don-t-lie-Lyrics.mp3?rlkey=fcso3ijkr3litskm9a7qebqlm&st=pgxf7ede&dl=1", cover: "https://i.postimg.cc/xdNWZ2dC/Manoly.jpg", volume: 0.9 },
+            { title: "Favorite", artist: "Isabel LaRosa", url: "https://www.dropbox.com/scl/fi/kahrcv2hrrso0v96iq9cc/Isabel-LaRosa-favorite-Lyric-Video.mp3?rlkey=tu2yzqjq0189533tcw4psnloh&st=pget5frx&dl=1", cover: "https://i.postimg.cc/PfK9HdYM/Love-love-love.jpg", volume: 0.9 },
+            { title: "wutiwant", artist: "saraunh0ly", url: "https://www.dropbox.com/scl/fi/woykzrrz2goiyiexmipnq/saraunh0ly-wutiwant-Nightcore.mp3?rlkey=q9lk74e7msele04txfdtg1ayu&st=fv0ba1js&dl=1", cover: "https://i.postimg.cc/NFQYLbj1/image.jpg", volume: 0.9 },
+            { title: "End of the Night (Sped Up)", artist: "", url: "https://www.dropbox.com/scl/fi/toikwyu74rqesnkd7zy2k/End-of-the-Night-Sped-Up.mp3?rlkey=9ci9utvnhghqjwgq9qljpyhth&st=rjgrkilc&dl=1", cover: "https://i.postimg.cc/rsHh7F3d/download-(17).jpg", volume: 0.9 },
+            { title: "Eternal Embrace", artist: "Baby Jane", url: "https://www.dropbox.com/scl/fi/2lxjcjpm82xcfs67nn9jx/Baby-Jane-Eternal-Embrace-Official-Audio.mp3?rlkey=19uq3r2t7q5bpznd4l68nr3pg&st=30czlili&dl=1", cover: "https://i.postimg.cc/gjMFMZvx/download-(19).jpg", volume: 0.9 },
+            { title: "winter 4ever", artist: "Baby Jane", url: "https://www.dropbox.com/scl/fi/9xmi7pstd8g5tahjrz2vz/Baby-Jane-winter-4ever-Official-Audio.mp3?rlkey=zt9by68ybsjjoiz5ysym59c3c&st=lac5hp83&dl=1", cover: "https://i.postimg.cc/y8gQ1TCj/xun-junyi-yo.jpg", volume: 0.9 }
         ];
 
         function shuffleArray(array) {
@@ -7215,9 +7258,10 @@ html body .deep-thoughts-release-btn:disabled {
         }
 
         function warmAudioAround(index) {
-            // Only warm the current and next track. This keeps bandwidth and
-            // browser media resources under control while retaining fast skips.
-            [index, index + 1].forEach((i) => {
+            // Prepare every playlist entry so previous/next selections can use
+            // an already-created media element instead of starting from scratch.
+            // The browser still controls how much media data it buffers.
+            playlist.forEach((track, i) => {
                 const el = preloadAudioTrack(i);
                 bindAudioEvents(el);
             });
@@ -8962,7 +9006,7 @@ html body .deep-thoughts-release-btn:disabled {
     window.closeMiniGame=function(){
         if(!win||miniGameBusy)return;
         running=false;cancelAnimationFrame(timerRaf);clearItems();
-        win.style.display='none';win.classList.remove('minimized');win.style.transform='none';
+        win.style.display='none';win.classList.remove('minimized','shared-journal-minimizing');win.style.removeProperty('--journal-minimize-transform');win.style.transform='none';
         startOverlay.style.display='flex';resultOverlay.hidden=true;timeEl.textContent='30';score=0;updateScore();
         if(taskbarBtn)taskbarBtn.style.display='none';
     };
@@ -9910,10 +9954,14 @@ html body .deep-thoughts-release-btn:disabled {
 
 <script id="shared-journal-app-script">
 (function(){
-  const JOURNAL_SUPABASE_URL = 'https://plszsqptzlxveblipkrq.supabase.co';
-  const JOURNAL_SUPABASE_KEY = 'sb_publishable_IJy2S5HugEDgGPq8xw0m8g_MBezyJ0x';
+  // Dedicated Supabase project for the shared Journal only.
+  const JOURNAL_SUPABASE_URL = 'https://ernfxrlhmucvayprnncl.supabase.co';
+  const JOURNAL_SUPABASE_KEY = 'sb_publishable_rN1AEA0qTUJrfgOLiTDXgQ_F8cJijii';
   const JOURNAL_TABLE = 'shared_journal_pages';
+  const JOURNAL_LOCAL_CACHE_KEY = 'sharedJournalPagesCache:v1';
   const win = document.getElementById('sharedJournalWindow');
+  let journalMinimizeTimer = null;
+  let journalRestoreLayout = null;
   const book = document.getElementById('journalBook');
   const scene = document.getElementById('journalBookScene');
   if(book && !book.querySelector('.journal-back-cover')){
@@ -9927,6 +9975,9 @@ html body .deep-thoughts-release-btn:disabled {
   const leftDate = document.getElementById('journalDateLeft');
   const rightDate = document.getElementById('journalDateRight');
   const pageMap = new Map();
+  // Shared by the rich-text settings layer so font/ink changes remain attached
+  // to the same saved page records as ordinary typing.
+  window.__sharedJournalPageMap = pageMap;
   const saveTimers = new Map();
   let journalClient = null;
   let journalChannel = null;
@@ -9954,12 +10005,18 @@ html body .deep-thoughts-release-btn:disabled {
     const date = side === 0 ? leftDate : rightDate;
     if(!input || !date) return;
     const active = document.activeElement === input;
-    if(!active) input.value = record ? String(record.content || '') : '';
+    const liveText = String(input.innerText || input.textContent || '').trim();
+    // A focused but empty editor must still hydrate from its saved page record.
+    // Only preserve an editor when it actually contains live text being edited;
+    // otherwise the date could load while its saved handwriting stayed invisible.
+    // These editors are contenteditable DIVs, so restore rich HTML through innerHTML.
+    if(!active || !liveText) input.innerHTML = record ? String(record.content || '') : '';
     date.textContent = record ? prettyDate(record.entry_date) : '';
   }
   function renderSpread(){
     setPageInput(0,pageMap.get(pageNumber(0)) || null);
     setPageInput(1,pageMap.get(pageNumber(1)) || null);
+    if(win){win.dataset.currentSpread=String(currentSpread);win.dispatchEvent(new CustomEvent('sharedjournalspreadchange'));}
   }
   function firstSavedSpread(){
     const savedPages = Array.from(pageMap.entries())
@@ -9969,33 +10026,127 @@ html body .deep-thoughts-release-btn:disabled {
     const first = Math.min.apply(null,savedPages);
     return Math.floor((first-1)/2);
   }
-  async function fetchJournalPages(){
-    if(!journalClient) return;
-    const {data,error} = await journalClient.from(JOURNAL_TABLE).select('page_number, entry_date, content, updated_at').order('page_number',{ascending:true});
-    if(error){console.error('Shared journal load error:',error.message);return;}
-    const activePage = document.activeElement === leftInput ? pageNumber(0) : document.activeElement === rightInput ? pageNumber(1) : null;
-    const activeValue = activePage === pageNumber(0) ? leftInput.value : activePage === pageNumber(1) ? rightInput.value : null;
-    pageMap.clear();
-    (data || []).forEach(row => pageMap.set(Number(row.page_number),row));
-    if(activePage !== null){
-      const current = pageMap.get(activePage);
-      if(current) current.content = activeValue;
+  function journalPlainText(input){
+    return String(input && (input.innerText || input.textContent) || '').replace(/\r/g,'');
+  }
+  function journalSerializedContent(input){
+    const html=String(input.innerHTML||'');
+    const computed=window.getComputedStyle?getComputedStyle(input):null;
+    const family=(input.style.fontFamily || (computed&&computed.fontFamily) || 'Caveat, cursive').trim();
+    const pageInk=input.style.getPropertyValue('--page-ink');
+    const color=(pageInk || (computed&&computed.color) || '#765564').trim();
+    // Store the page's inherited handwriting face and ink with its HTML. Inline
+    // spans inside the page still override this wrapper, preserving mixed ink.
+    const holder=document.createElement('div');
+    holder.innerHTML=html;
+    if(holder.childNodes.length===1 && holder.firstElementChild && holder.firstElementChild.tagName==='SPAN'){
+      const only=holder.firstElementChild;
+      if(only.style.fontFamily && only.style.color){
+        // This is an already-serialized page wrapper. Its saved font/ink belong
+        // to the shared page, not to this browser's local preference.
+        return holder.innerHTML;
+      }
     }
-    if(!win.dataset.userTurnedPages && !win.dataset.opened){currentSpread = firstSavedSpread();}
-    renderSpread();
+    const wrapper=document.createElement('span');
+    wrapper.style.fontFamily=family;
+    wrapper.style.color=color;
+    wrapper.innerHTML=html;
+    return wrapper.outerHTML;
+  }
+  function persistJournalLocalCache(){
+    try{
+      const rows=Array.from(pageMap.values()).filter(row=>row&&Number.isFinite(Number(row.page_number)));
+      localStorage.setItem(JOURNAL_LOCAL_CACHE_KEY,JSON.stringify(rows));
+    }catch(error){console.warn('Shared journal local backup could not be written:',error);}
+  }
+  function restoreJournalLocalCache(){
+    try{
+      const raw=localStorage.getItem(JOURNAL_LOCAL_CACHE_KEY);
+      if(!raw)return;
+      const rows=JSON.parse(raw);
+      if(!Array.isArray(rows))return;
+      rows.forEach(row=>{
+        const number=Number(row&&row.page_number);
+        if(!Number.isFinite(number)||number<1||!row||typeof row.content!=='string')return;
+        pageMap.set(number,{...row,page_number:number});
+      });
+      if(pageMap.size)console.info('Shared journal local recovery copy loaded:',pageMap.size,'page(s).');
+    }catch(error){console.warn('Shared journal local backup could not be read:',error);}
+  }
+  restoreJournalLocalCache();
+  async function fetchJournalPages(){
+    if(!journalClient) return false;
+    try{
+      const {data,error} = await journalClient.from(JOURNAL_TABLE).select('page_number, entry_date, content, updated_at').order('page_number',{ascending:true});
+      if(error){console.error('Shared journal load error:',error.message,{code:error.code,details:error.details,hint:error.hint});return false;}
+      const remoteRows=new Map((data||[]).map(row=>[Number(row.page_number),row]));
+      const localRows=Array.from(pageMap.values());
+      // Cloud is authoritative unless this browser has a newer unsent local copy.
+      pageMap.clear();
+      remoteRows.forEach((row,number)=>pageMap.set(number,row));
+      const pendingUploads=[];
+      localRows.forEach(local=>{
+        const number=Number(local.page_number);
+        const remote=pageMap.get(number);
+        const localTime=Date.parse(local.updated_at||0)||0;
+        const remoteTime=Date.parse(remote&&remote.updated_at||0)||0;
+        const localProbe=document.createElement('div');localProbe.innerHTML=String(local.content||'');
+        const remoteProbe=document.createElement('div');remoteProbe.innerHTML=String(remote&&remote.content||'');
+        const localHasText=String(localProbe.innerText||localProbe.textContent||'').trim().length>0;
+        const remoteHasText=String(remoteProbe.innerText||remoteProbe.textContent||'').trim().length>0;
+        // Preserve a non-empty local recovery copy if the corresponding cloud row
+        // is blank; otherwise the newer timestamp remains the conflict rule.
+        if(!remote||(localHasText&&!remoteHasText)||localTime>remoteTime){
+          pageMap.set(number,local);
+          pendingUploads.push(local);
+        }
+      });
+      persistJournalLocalCache();
+      // Retry local drafts that were cached while the network or Supabase was unavailable.
+      for(const pending of pendingUploads){
+        try{
+          const {error:uploadError}=await journalClient.from(JOURNAL_TABLE).upsert(pending,{onConflict:'page_number'});
+          if(uploadError)console.error('Shared journal cached draft could not sync:',uploadError.message,{code:uploadError.code,details:uploadError.details,hint:uploadError.hint});
+          else console.info('Shared journal cached draft synced:',pending.page_number);
+        }catch(uploadError){console.error('Shared journal cached draft sync failed:',uploadError);}
+      }
+      if(!win.dataset.userTurnedPages && !win.dataset.opened){currentSpread = firstSavedSpread();}
+      renderSpread();
+      return true;
+    }catch(error){
+      console.error('Shared journal load failed unexpectedly:',error);
+      return false;
+    }
   }
   async function initializeJournalCloud(){
     if(journalReady) return true;
     if(journalLoading) return journalLoading;
     journalLoading = (async()=>{
       try{
-        if(!window.supabase || !window.supabase.createClient) throw new Error('Supabase library did not load.');
-        journalClient = window.supabase.createClient(JOURNAL_SUPABASE_URL,JOURNAL_SUPABASE_KEY);
-        await fetchJournalPages();
-        journalChannel = journalClient.channel('shared-journal-pages-live')
-          .on('postgres_changes',{event:'*',schema:'public',table:JOURNAL_TABLE},()=>fetchJournalPages())
-          .subscribe(status=>{if(status==='CHANNEL_ERROR') console.error('Shared journal realtime subscription failed.');});
+        if(!window.supabase || !window.supabase.createClient) throw new Error('Supabase library did not load. Check the Supabase CDN script and internet connection.');
+        // Reuse the client across retries, but do not mark the Journal ready
+        // until its first cloud read succeeds.
+        if(!journalClient) journalClient = window.supabase.createClient(JOURNAL_SUPABASE_URL,JOURNAL_SUPABASE_KEY);
+        const loaded = await fetchJournalPages();
+        if(!loaded){
+          console.error('Shared journal initialization stopped because its first cloud read failed. It will retry the next time the Journal is opened or a save is attempted.');
+          return false;
+        }
+        // Realtime is for live updates; it is not required for a successful
+        // database read or write. A subscription error must not disable saving.
+        if(!journalChannel){
+          journalChannel = journalClient.channel('shared-journal-pages-live')
+            .on('postgres_changes',{event:'*',schema:'public',table:JOURNAL_TABLE},payload=>{
+              console.info('Shared journal realtime update received.',payload&&payload.eventType);
+              fetchJournalPages();
+            })
+            .subscribe((status,error)=>{
+              if(status==='SUBSCRIBED') console.info('Shared journal realtime connected.');
+              else if(status==='CHANNEL_ERROR'||status==='TIMED_OUT'||status==='CLOSED') console.error('Shared journal realtime status:',status,error||'');
+            });
+        }
         journalReady = true;
+        console.info('Shared journal cloud initialized successfully.');
         return true;
       }catch(error){console.error('Shared journal could not connect:',error);return false;}
       finally{journalLoading=null;}
@@ -10003,30 +10154,66 @@ html body .deep-thoughts-release-btn:disabled {
     return journalLoading;
   }
   async function savePage(number,input){
-    const content = input.value;
+    const content = journalSerializedContent(input);
     const existing = pageMap.get(number);
-    if(!content.trim() && !existing) return;
+    if(!journalPlainText(input).trim() && !existing) return;
+    if(!journalPlainText(input).trim() && journalRecordHasText(existing)){
+      console.warn('Shared journal prevented an empty save from replacing an existing entry:',number);
+      return;
+    }
     const entryDate = existing && existing.entry_date ? existing.entry_date : localDateString();
     const payload = {page_number:number,entry_date:entryDate,content:content,updated_at:new Date().toISOString()};
     pageMap.set(number,payload);
+    persistJournalLocalCache();
     const side = number % 2 === 1 ? 0 : 1;
     const dateEl = side === 0 ? leftDate : rightDate;
     if(number === pageNumber(side)) dateEl.textContent = prettyDate(entryDate);
-    if(!journalClient){const ok=await initializeJournalCloud();if(!ok)return;}
-    const {error} = await journalClient.from(JOURNAL_TABLE).upsert(payload,{onConflict:'page_number'});
-    if(error) console.error('Shared journal save error:',error.message);
+    if(!journalReady){const ok=await initializeJournalCloud();if(!ok){console.error('Shared journal save remains in the local recovery cache; cloud initialization failed and will be retried.');return;}}
+    try{
+      const {error} = await journalClient.from(JOURNAL_TABLE).upsert(payload,{onConflict:'page_number'});
+      if(error){
+        console.error('Shared journal save error:',error.message,{code:error.code,details:error.details,hint:error.hint});
+      }else{
+        console.info('Shared journal page saved to Supabase:',number);
+        pageMap.set(number,payload);
+        persistJournalLocalCache();
+      }
+    }catch(error){console.error('Shared journal save failed unexpectedly:',error);}
+  }
+  function journalRecordHasText(record){
+    if(!record||typeof record.content!=='string')return false;
+    const probe=document.createElement('div');probe.innerHTML=record.content;
+    return String(probe.innerText||probe.textContent||'').trim().length>0;
   }
   function schedulePageSave(side){
     const number = pageNumber(side);
     const input = side === 0 ? leftInput : rightInput;
     const dateEl = side === 0 ? leftDate : rightDate;
-    if(!pageMap.has(number) && input.value.trim()){
-      const fresh = {page_number:number,entry_date:localDateString(),content:input.value};
+    const plain=journalPlainText(input);
+    const existing=pageMap.get(number);
+    // A transient empty editor (for example while cloud data is still hydrating)
+    // must never erase a previously saved page. Non-empty edits still save normally.
+    if(!plain.trim()&&journalRecordHasText(existing)){
+      console.warn('Shared journal kept the saved page instead of saving a transient blank editor:',number);
+      return;
+    }
+    if(!pageMap.has(number) && plain.trim()){
+      const fresh = {page_number:number,entry_date:localDateString(),content:journalSerializedContent(input),updated_at:new Date().toISOString()};
       pageMap.set(number,fresh);dateEl.textContent=prettyDate(fresh.entry_date);
-    } else if(pageMap.has(number)) pageMap.get(number).content=input.value;
+    } else if(pageMap.has(number)){
+      const existing=pageMap.get(number);
+      existing.content=journalSerializedContent(input);
+      existing.updated_at=new Date().toISOString();
+    }
+    persistJournalLocalCache();
     clearTimeout(saveTimers.get(number));
     saveTimers.set(number,setTimeout(()=>{saveTimers.delete(number);savePage(number,input);},420));
   }
+  // Font and colour controls call this too, so formatting-only changes are saved.
+  window.__saveSharedJournalEditor = function(editor){
+    if(editor===leftInput)schedulePageSave(0);
+    else if(editor===rightInput)schedulePageSave(1);
+  };
   function flushVisibleSaves(){
     [0,1].forEach(side=>{
       const number=pageNumber(side);const timer=saveTimers.get(number);
@@ -10034,19 +10221,23 @@ html body .deep-thoughts-release-btn:disabled {
     });
   }
   function fittingTextLength(input,text){
-    const probe=input.cloneNode();
+    // Measure in a real contenteditable clone. Assigning `.value` to a cloned
+    // DIV does not render text, which made the old measurement think every
+    // page had unlimited room and silently disabled automatic page turns.
+    const probe=input.cloneNode(false);
     probe.removeAttribute('id');
-    probe.value='';
+    probe.removeAttribute('aria-label');
     const rect=input.getBoundingClientRect();
     probe.style.position='fixed';probe.style.left='-10000px';probe.style.top='0';
     probe.style.visibility='hidden';probe.style.pointerEvents='none';
     probe.style.width=rect.width+'px';probe.style.height=rect.height+'px';
-    probe.style.boxSizing='border-box';probe.style.overflowY='hidden';
+    probe.style.boxSizing='border-box';probe.style.overflow='hidden';
+    probe.style.maxHeight='none';probe.style.minHeight='0';
     document.body.appendChild(probe);
     let low=0,high=text.length;
     while(low<high){
       const mid=Math.ceil((low+high)/2);
-      probe.value=text.slice(0,mid);
+      probe.textContent=text.slice(0,mid);
       if(probe.scrollHeight<=probe.clientHeight+1)low=mid;else high=mid-1;
     }
     probe.remove();
@@ -10057,36 +10248,94 @@ html body .deep-thoughts-release-btn:disabled {
     if(naturalBreak>Math.floor(cut*.72))cut=naturalBreak;
     return Math.max(1,cut);
   }
-  function moveOverflowToPage(fromSide,overflow){
-    if(!overflow)return;
+  // Resolve a plain-text character offset to a DOM boundary without flattening
+  // the editor. This lets automatic overflow retain inline font and ink spans.
+  function journalBoundaryAtTextOffset(root, wanted){
+    const points=[{node:root,offset:0}];
+    let count=0;
+    const appendBreak=(point)=>{count++;points[count]=point;};
+    const visit=(node)=>{
+      if(node.nodeType===Node.TEXT_NODE){
+        for(let i=0;i<node.nodeValue.length;i++){
+          count++;points[count]={node,offset:i+1};
+        }
+        return;
+      }
+      if(node.nodeType!==Node.ELEMENT_NODE)return;
+      if(node.tagName==='BR'){
+        appendBreak({node:node.parentNode,offset:Array.prototype.indexOf.call(node.parentNode.childNodes,node)+1});
+        return;
+      }
+      const isBlock=node!==root && /^(DIV|P|LI)$/.test(node.tagName);
+      Array.from(node.childNodes).forEach(visit);
+      // innerText inserts one line break between adjacent block children.
+      if(isBlock && node.nextSibling){
+        const previous=points[count];
+        const alreadyBreak=previous && previous.node===node.parentNode && previous.offset===Array.prototype.indexOf.call(node.parentNode.childNodes,node)+1;
+        if(!alreadyBreak)appendBreak({node:node.parentNode,offset:Array.prototype.indexOf.call(node.parentNode.childNodes,node)+1});
+      }
+    };
+    Array.from(root.childNodes).forEach(visit);
+    return points[Math.max(0,Math.min(Number(wanted)||0,points.length-1))] || {node:root,offset:root.childNodes.length};
+  }
+  function extractJournalOverflow(editor,cut){
+    const boundary=journalBoundaryAtTextOffset(editor,cut);
+    const range=document.createRange();
+    range.setStart(boundary.node,boundary.offset);
+    range.setEnd(editor,editor.childNodes.length);
+    const fragment=range.extractContents();
+    // Discard only leading whitespace that belongs to the page break.
+    const firstText=(node)=>{
+      if(node.nodeType===Node.TEXT_NODE)return node;
+      for(const child of node.childNodes||[]){const found=firstText(child);if(found)return found;}
+      return null;
+    };
+    const first=firstText(fragment);
+    if(first)first.nodeValue=first.nodeValue.replace(/^\s+/, '');
+    return fragment;
+  }
+  function moveOverflowToPage(fromSide,overflowFragment){
+    if(!overflowFragment || !overflowFragment.childNodes.length)return;
+    const placeOnPage=(destination)=>{
+      const hadContent=destination.childNodes.length>0;
+      const inserted=Array.from(overflowFragment.childNodes);
+      destination.insertBefore(overflowFragment,destination.firstChild);
+      if(hadContent){
+        const separator=document.createElement('br');
+        destination.insertBefore(separator,inserted.length?inserted[inserted.length-1].nextSibling:destination.firstChild);
+      }
+      destination.focus();
+      if(inserted.length){
+        const caret=document.createRange();
+        try{caret.setStartAfter(inserted[inserted.length-1]);caret.collapse(true);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(caret);}catch(error){}
+      }
+    };
     if(fromSide===0){
-      const destination=rightInput;
-      destination.value=overflow+(destination.value?'\n'+destination.value:'');
-      destination.focus();destination.setSelectionRange(overflow.length,overflow.length);
-      handleJournalInput(1);
+      placeOnPage(rightInput);
+      schedulePageSave(1);
+      rightInput.scrollTop=0;
       return;
     }
     // The next page after the right-hand page is the left page of the next spread.
     rightInput.blur();
     turnPages(1,()=>{
-      const destination=leftInput;
-      destination.value=overflow+(destination.value?'\n'+destination.value:'');
-      destination.focus();destination.setSelectionRange(overflow.length,overflow.length);
-      handleJournalInput(0);
+      placeOnPage(leftInput);
+      schedulePageSave(0);
+      leftInput.scrollTop=0;
     });
   }
   function handleJournalInput(side){
     const input=side===0?leftInput:rightInput;
-    const value=input.value;
-    if(input.scrollHeight>input.clientHeight+1 && input.selectionStart===value.length){
+    const value=journalPlainText(input);
+    const selection=window.getSelection();
+    const caretAtEnd=!!(selection && selection.rangeCount && input.contains(selection.anchorNode) && input.selectionStart===value.length);
+    if(input.scrollHeight>input.clientHeight+1 && caretAtEnd){
       const cut=fittingTextLength(input,value);
-      const kept=value.slice(0,cut).replace(/\s+$/,'');
-      let overflow=value.slice(cut).replace(/^\s/,'');
-      if(!overflow){schedulePageSave(side);input.scrollTop=0;return;}
-      input.value=kept;
-      input.setSelectionRange(kept.length,kept.length);
+      const overflowText=value.slice(cut);
+      if(!overflowText.trim()){schedulePageSave(side);input.scrollTop=0;return;}
+      const overflowFragment=extractJournalOverflow(input,cut);
       schedulePageSave(side);
-      moveOverflowToPage(side,overflow);
+      moveOverflowToPage(side,overflowFragment);
       return;
     }
     schedulePageSave(side);
@@ -10100,15 +10349,17 @@ html body .deep-thoughts-release-btn:disabled {
     const record=pageMap.get(number);
     const date=copy.querySelector('.journal-page-date');
     if(date)date.textContent=record?prettyDate(record.entry_date):'';
-    const originalInput=source.querySelector('textarea');
-    const copiedInput=copy.querySelector('textarea');
+    const originalInput=source.querySelector('.journal-page-writing');
+    const copiedInput=copy.querySelector('.journal-page-writing');
     if(copiedInput){
       const writing=document.createElement('div');
       writing.className='journal-page-writing journal-turn-writing-copy';
-      writing.textContent=useLiveValue&&originalInput?originalInput.value:(record?String(record.content||''):'');
+      writing.innerHTML=useLiveValue&&originalInput?originalInput.innerHTML:(record?String(record.content||''):'');
+      const pageInk=originalInput?.style.getPropertyValue('--page-ink');
+      if(pageInk)writing.style.setProperty('--page-ink',pageInk);
       copiedInput.replaceWith(writing);
     }
-    copy.querySelectorAll('textarea').forEach(el=>el.remove());
+    copy.querySelectorAll('.journal-page-writing').forEach(el=>el.remove());
     return copy;
   }
   function makeJournalTurnLeaf(side,targetSpread){
@@ -10161,11 +10412,11 @@ html body .deep-thoughts-release-btn:disabled {
     const animation=leaf.animate([
       // Keep the sheet perfectly level with the book's spine: it hinges only
       // around the vertical spine axis (rotateY), never pitches forward/back.
-      {transform:'rotateY(0deg) translateZ(0)',boxShadow:'0 1px 2px rgba(70,45,57,.08)'},
-      {transform:`rotateY(${direction>0?-24:24}deg) translateZ(1px)`,boxShadow:direction>0?'-4px 1px 9px rgba(70,45,57,.15)':'4px 1px 9px rgba(70,45,57,.15)',offset:.16},
-      {transform:`rotateY(${midAngle}deg) translateZ(2px)`,boxShadow:shadow,offset:.50},
-      {transform:`rotateY(${direction>0?-158:158}deg) translateZ(1px)`,boxShadow:direction>0?'-5px 1px 10px rgba(70,45,57,.16)':'5px 1px 10px rgba(70,45,57,.16)',offset:.88},
-      {transform:`rotateY(${endAngle}deg) translateZ(0)`,boxShadow:'0 1px 2px rgba(70,45,57,.06)'}
+      {transform:'rotateY(0deg) translateZ(0)',boxShadow:'none'},
+      {transform:`rotateY(${direction>0?-24:24}deg) translateZ(1px)`,boxShadow:'none',offset:.16},
+      {transform:`rotateY(${midAngle}deg) translateZ(2px)`,boxShadow:'none',offset:.50},
+      {transform:`rotateY(${direction>0?-158:158}deg) translateZ(1px)`,boxShadow:'none',offset:.88},
+      {transform:`rotateY(${endAngle}deg) translateZ(0)`,boxShadow:'none'}
     ],{duration:920,easing:'cubic-bezier(.38,.02,.22,1)',fill:'forwards'});
     leaf._journalAnimation=animation;
     const finish=()=>{
@@ -10199,9 +10450,9 @@ html body .deep-thoughts-release-btn:disabled {
       face.classList.add(side==='left'?'journal-page-left':'journal-page-right');
       const date=face.querySelector('.journal-page-date');
       if(date)date.textContent='';
-      const input=face.querySelector('textarea');
+      const input=face.querySelector('.journal-page-writing');
       if(input){const blank=document.createElement('div');blank.className='journal-page-writing';blank.textContent='';input.replaceWith(blank);}
-      face.querySelectorAll('textarea').forEach(el=>el.remove());
+      face.querySelectorAll('.journal-page-writing').forEach(el=>el.remove());
       return face;
     };
     for(let i=0;i<5;i++){
@@ -10222,72 +10473,109 @@ html body .deep-thoughts-release-btn:disabled {
   function playOpeningAnimation(){
     isPageTurning=false;
     if(openingTimer){clearTimeout(openingTimer);openingTimer=null;}
+    if(book._journalOpeningFrame){cancelAnimationFrame(book._journalOpeningFrame);book._journalOpeningFrame=null;}
     if(book._coverOpenHandler){book._coverOpenHandler();book._coverOpenHandler=null;}
     clearJournalOpeningLeaves();
     book.classList.remove('is-opening','is-open','cover-opened','is-turning-next','is-turning-previous','is-opening-pages');
     book.classList.add('is-closed');
-    // Stage the paper leaves while the hardcover is still closed. The cover hides
-    // them until it moves, so the paper is already inside the book from frame one.
-    const leaves=createJournalOpeningLeaves();
+
+    // Establish the closed-cover frame first. The browser can paint the app's
+    // opening state before we build the decorative page-leaf clones.
     void book.offsetWidth;
     book.classList.remove('is-closed','is-pages-hidden');
     book.classList.add('is-opening','is-opening-pages');
 
-    // Start the page sequence on the same frame as the cover transition. The leaves
-    // are beneath the cover at first, then are revealed already in motion as it opens.
-    const duration=900;
-    const stagger=315;
-    leaves.forEach((leaf,index)=>{
-      leaf.style.zIndex=8+index;
-      leaf.style.visibility='visible';
-      const animation=leaf.animate([
-        {transform:'rotateY(0deg)',opacity:1,boxShadow:'0 2px 5px rgba(70,45,57,.10)'},
-        {transform:'rotateY(-76deg)',opacity:1,boxShadow:'-9px 2px 15px rgba(70,45,57,.22)',offset:.44},
-        {transform:'rotateY(-122deg)',opacity:1,boxShadow:'-5px 2px 10px rgba(70,45,57,.16)',offset:.70},
-        {transform:'rotateY(-180deg)',opacity:0,boxShadow:'0 1px 3px rgba(70,45,57,.06)'}
-      ],{duration,delay:index*stagger,easing:'cubic-bezier(.45,.04,.2,1)',fill:'forwards'});
-      leaf._journalAnimation=animation;
-      animation.onfinish=()=>{
-        leaf.remove();
-        if(index===leaves.length-1){
-          book.classList.add('is-open');
-          book.classList.remove('is-opening','cover-opened','is-opening-pages');
-          // If the first cloud refresh completed during the page-flip sequence,
-          // apply its page data only after the moving leaves have settled. This
-          // prevents a mid-animation textarea/date re-render from causing a hitch.
-          if(book._journalCloudRenderPending){
-            book._journalCloudRenderPending=false;
-            currentSpread=firstSavedSpread();
-            renderSpread();
-          }
-        }
-      };
-    });
     // Keep the hardcover above the paper until its real opening transition completes.
-    // The paper leaves begin moving underneath it immediately, so they are never late to the reveal.
     const cover=book.querySelector('.journal-cover');
-    const coverTransitionHandler=(event)=>{
-      if(event&&event.target!==cover)return;
-      if(event&&event.propertyName&&event.propertyName!=='transform')return;
-      revealInterior();
-    };
     const revealInterior=()=>{
       if(cover)cover.removeEventListener('transitionend',coverTransitionHandler);
       if(book._coverOpenHandler===revealInterior)book._coverOpenHandler=null;
       if(book._coverRevealTimer){clearTimeout(book._coverRevealTimer);book._coverRevealTimer=null;}
       book.classList.add('cover-opened');
     };
+    const coverTransitionHandler=(event)=>{
+      if(event&&event.target!==cover)return;
+      if(event&&event.propertyName&&event.propertyName!=='transform')return;
+      revealInterior();
+    };
     book._coverOpenHandler=revealInterior;
     if(cover)cover.addEventListener('transitionend',coverTransitionHandler);
     book._coverRevealTimer=setTimeout(revealInterior,1160);
+
+    // Defer the expensive page cloning until after the first visible frame.
+    // The leaves still begin their full-length staggered turns immediately
+    // underneath the opening cover, preserving the original choreography.
+    book._journalOpeningFrame=requestAnimationFrame(()=>{
+      book._journalOpeningFrame=null;
+      if(!book.isConnected||!book.classList.contains('is-opening-pages'))return;
+      const leaves=createJournalOpeningLeaves();
+      const duration=900;
+      const stagger=315;
+      leaves.forEach((leaf,index)=>{
+        leaf.style.zIndex=8+index;
+        leaf.style.visibility='visible';
+        const animation=leaf.animate([
+          {transform:'rotateY(0deg)',opacity:1,boxShadow:'0 2px 5px rgba(70,45,57,.10)'},
+          {transform:'rotateY(-76deg)',opacity:1,boxShadow:'-9px 2px 15px rgba(70,45,57,.22)',offset:.44},
+          {transform:'rotateY(-122deg)',opacity:1,boxShadow:'-5px 2px 10px rgba(70,45,57,.16)',offset:.70},
+          {transform:'rotateY(-180deg)',opacity:0,boxShadow:'0 1px 3px rgba(70,45,57,.06)'}
+        ],{duration,delay:index*stagger,easing:'cubic-bezier(.45,.04,.2,1)',fill:'forwards'});
+        leaf._journalAnimation=animation;
+        animation.onfinish=()=>{
+          leaf.remove();
+          if(index===leaves.length-1){
+            book.classList.add('is-open');
+            book.classList.remove('is-opening','cover-opened','is-opening-pages');
+            // If the first cloud refresh completed during the page-flip sequence,
+            // apply its page data only after the moving leaves have settled.
+            if(book._journalCloudRenderPending){
+              book._journalCloudRenderPending=false;
+              currentSpread=firstSavedSpread();
+              renderSpread();
+            }
+          }
+        };
+      });
+    });
+  }
+  function rememberJournalWindowLayout(){
+    const props=['position','left','top','right','bottom','transform','transition'];
+    const inline={};props.forEach(prop=>inline[prop]=win.style.getPropertyValue(prop));
+    journalRestoreLayout={
+      centered:win.classList.contains('shared-journal-centered'),
+      userPositioned:win.classList.contains('shared-journal-user-positioned')||win.dataset.journalUserPositioned==='true',
+      inline
+    };
+  }
+  function restoreJournalWindowLayout(){
+    if(!journalRestoreLayout)return;
+    const saved=journalRestoreLayout;journalRestoreLayout=null;
+    win.classList.remove('shared-journal-centered','shared-journal-user-positioned','shared-journal-minimizing','minimized');
+    if(saved.centered&&!saved.userPositioned)win.classList.add('shared-journal-centered');
+    else if(saved.userPositioned)win.classList.add('shared-journal-user-positioned');
+    Object.entries(saved.inline).forEach(([prop,value])=>{
+      if(value)win.style.setProperty(prop,value);else win.style.removeProperty(prop);
+    });
+    win.style.removeProperty('--journal-minimize-transform');
   }
   window.openSharedJournal = async function(){
     if(!win) return;
+    const wasMinimized=win.classList.contains('minimized')||win.classList.contains('shared-journal-minimizing')||!!journalRestoreLayout;
+    if(journalMinimizeTimer){clearTimeout(journalMinimizeTimer);journalMinimizeTimer=null;}
     const wasClosed = win.style.display === 'none' || !win.style.display;
-    win.classList.remove('minimized');win.style.display='flex';
-    // A rapid taskbar reopen must cancel the tiny minimized transform immediately.
-    win.style.transform='none';
-    if (!win.dataset.initialized) centerWindowOnFirstOpen(win);
+    if(wasMinimized)restoreJournalWindowLayout();
+    if(!wasClosed && !win.classList.contains('minimized') && !win.classList.contains('shared-journal-minimizing')){
+      if(typeof bringWindowToFront==='function')bringWindowToFront(win);
+      return;
+    }
+    // Restore the exact pre-minimize geometry before revealing the window.
+    // In particular, never keep the temporary taskbar destination as its left/top.
+    win.style.display='flex';
+    if(!wasMinimized){
+      win.style.transition='none';
+      if (!win.dataset.initialized) centerWindowOnFirstOpen(win);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{win.style.transition='';}));
+    }
     const taskbar=document.getElementById('taskbarSharedJournal');if(taskbar)taskbar.style.display='flex';
     if(typeof bringWindowToFront==='function')bringWindowToFront(win);
     if(wasClosed){
@@ -10316,15 +10604,35 @@ html body .deep-thoughts-release-btn:disabled {
     else window.minimizeSharedJournal();
   };
   window.minimizeSharedJournal=function(){
-    if(!win)return;flushVisibleSaves();
-    const taskbar=document.getElementById('taskbarSharedJournal');if(!taskbar){win.style.display='none';return;}
-    const a=win.getBoundingClientRect(),b=taskbar.getBoundingClientRect();win.style.transform='none';win.style.left=a.left+'px';win.style.top=a.top+'px';
+    if(!win || win.style.display==='none' || win.classList.contains('minimized') || win.classList.contains('shared-journal-minimizing'))return;
+    rememberJournalWindowLayout();
+    flushVisibleSaves();
+    const taskbar=document.getElementById('taskbarSharedJournal');
+    if(!taskbar){restoreJournalWindowLayout();win.style.display='none';return;}
+    const a=win.getBoundingClientRect(),b=taskbar.getBoundingClientRect();
+    // Freeze the actual on-screen rectangle, then animate toward the taskbar.
+    win.classList.remove('shared-journal-centered');
+    win.style.position='fixed';win.style.right='auto';win.style.bottom='auto';
+    win.style.left=a.left+'px';win.style.top=a.top+'px';win.style.transform='none';
     const x=b.left+b.width/2-(a.left+a.width/2),y=b.top+b.height/2-(a.top+a.height/2);
-    win.style.transform=`translate(${x}px,${y}px) scale(.05)`;win.classList.add('minimized');
-    setTimeout(()=>{if(win.classList.contains('minimized')){win.style.display='none';win.style.transform='none';}},350);
+    win.style.setProperty('--journal-minimize-transform',`translate(${x}px,${y}px) scale(.05)`);
+    win.classList.add('shared-journal-minimizing','minimized');
+    if(journalMinimizeTimer)clearTimeout(journalMinimizeTimer);
+    journalMinimizeTimer=setTimeout(()=>{
+      journalMinimizeTimer=null;
+      if(win.classList.contains('minimized')){
+        win.style.display='none';win.classList.remove('shared-journal-minimizing');
+        win.style.removeProperty('--journal-minimize-transform');win.style.transform='none';
+      }
+    },370);
   };
   window.closeSharedJournal=function(){
-    if(!win)return;flushVisibleSaves();
+    if(!win)return;
+    if(journalMinimizeTimer){clearTimeout(journalMinimizeTimer);journalMinimizeTimer=null;}
+    journalRestoreLayout=null;
+    win.classList.remove('shared-journal-minimizing','minimized');
+    win.style.removeProperty('--journal-minimize-transform');
+    flushVisibleSaves();
     if(openingTimer){clearTimeout(openingTimer);openingTimer=null;}
     if(book._coverOpenHandler){book._coverOpenHandler();book._coverOpenHandler=null;}
     if(pageTurnTimer){clearTimeout(pageTurnTimer);pageTurnTimer=null;}
@@ -10338,6 +10646,11 @@ html body .deep-thoughts-release-btn:disabled {
   };
   leftInput.addEventListener('input',()=>handleJournalInput(0));
   rightInput.addEventListener('input',()=>handleJournalInput(1));
+  [leftInput,rightInput].forEach(editor=>editor.addEventListener('blur',()=>{
+    flushVisibleSaves();
+    // Once local typing has been committed, pull any changes made by the other writer.
+    setTimeout(()=>{if(journalReady)fetchJournalPages();else initializeJournalCloud();},650);
+  }));
   const previousArrow=document.getElementById('journalPrevious');
   const nextArrow=document.getElementById('journalNext');
   previousArrow.addEventListener('click',()=>turnPages(-1));
@@ -10347,18 +10660,41 @@ html body .deep-thoughts-release-btn:disabled {
   }));
 
   const title=document.getElementById('sharedJournalTitlebar');
-  title.addEventListener('mousedown',e=>{
-    if(e.target.closest('.window-controls'))return;
+  title.addEventListener('pointerdown',e=>{
+    if(e.button!==0||e.target.closest('.window-controls'))return;
     if(typeof bringWindowToFront==='function')bringWindowToFront(win);
-    isDragging=true;dragStartX=e.clientX;dragStartY=e.clientY;
-    const rect=win.getBoundingClientRect();win.style.transform='none';win.style.left=rect.left+'px';win.style.top=rect.top+'px';
+    // Freeze the current visual position before dragging, then retain the exact
+    // pointer-to-window offset so the titlebar never jumps away from the cursor.
+    const rect=win.getBoundingClientRect();
+    win.style.transition='none';
+    win.style.transform='none';
+    win.style.left=rect.left+'px';win.style.top=rect.top+'px';
+    dragStartX=e.clientX;dragStartY=e.clientY;
     dragInitialLeft=rect.left;dragInitialTop=rect.top;
-    document.addEventListener('mousemove',moveWindow);document.addEventListener('mouseup',stopWindow);
+    isDragging=true;
+    title.setPointerCapture?.(e.pointerId);
+    document.addEventListener('pointermove',moveWindow);
+    document.addEventListener('pointerup',stopWindow);
+    document.addEventListener('pointercancel',stopWindow);
+    e.preventDefault();
   });
-  function moveWindow(e){if(!isDragging)return;win.style.left=(dragInitialLeft+e.clientX-dragStartX)+'px';win.style.top=(dragInitialTop+e.clientY-dragStartY)+'px';}
-  function stopWindow(){isDragging=false;document.removeEventListener('mousemove',moveWindow);document.removeEventListener('mouseup',stopWindow);}
+  function moveWindow(e){
+    if(!isDragging)return;
+    win.style.left=(dragInitialLeft+e.clientX-dragStartX)+'px';
+    win.style.top=(dragInitialTop+e.clientY-dragStartY)+'px';
+  }
+  function stopWindow(){
+    if(!isDragging)return;
+    isDragging=false;
+    document.removeEventListener('pointermove',moveWindow);
+    document.removeEventListener('pointerup',stopWindow);
+    document.removeEventListener('pointercancel',stopWindow);
+    win.style.transition='';
+  }
   win.addEventListener('mousedown',()=>{if(typeof bringWindowToFront==='function')bringWindowToFront(win);});
   window.addEventListener('beforeunload',flushVisibleSaves);
+  window.addEventListener('pagehide',flushVisibleSaves);
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushVisibleSaves();});
 })();
 </script>
 
@@ -10517,122 +10853,484 @@ html body .deep-thoughts-release-btn:disabled {
     cursor: text !important;
   }
 </style>
-<script id="shared-journal-click-any-line-caret-fix">
-(function(){
-  const book = document.getElementById('journalBook');
-  if (!book || book.dataset.clickAnywhereEditingBound === 'true') return;
-  book.dataset.clickAnywhereEditingBound = 'true';
+<script id="shared-journal-click-any-line-caret-fix">/* Native contenteditable caret placement is used; the old estimated-line caret code caused offset clicks. */</script>
 
-  function buildVisualLines(text, width, font, letterSpacing, measure){
-    const lines = [];
-    let offset = 0;
-    const paragraphs = String(text || '').split('\n');
-    paragraphs.forEach((paragraph, paragraphIndex) => {
-      const paragraphStart = offset;
-      if (!paragraph.length) {
-        lines.push({start: paragraphStart, end: paragraphStart});
-      } else {
-        let start = 0;
-        while (start < paragraph.length) {
-          let end = start;
-          let lastSpace = -1;
-          while (end < paragraph.length) {
-            const candidate = paragraph.slice(start, end + 1);
-            const measured = measure(candidate, font, letterSpacing);
-            if (measured > width && end > start) break;
-            if (paragraph[end] === ' ') lastSpace = end;
-            end++;
-            if (measured > width) break;
-          }
-          if (end < paragraph.length && lastSpace >= start && lastSpace > start) end = lastSpace + 1;
-          if (end <= start) end = start + 1;
-          lines.push({start: paragraphStart + start, end: paragraphStart + end});
-          start = end;
-        }
+
+<style id="shared-journal-vintage-doodles-bookmark-settings">
+/* Warm, gently aged paper: the ruled baseline stays in place while the paper gains depth. */
+.journal-page,
+.journal-live-turn-front .journal-page,
+.journal-live-turn-back .journal-page{
+  background-color:#f2e6d2!important;
+  background-image:
+    radial-gradient(ellipse at 8% 13%,rgba(164,116,73,.12) 0 1.5%,transparent 12%),
+    radial-gradient(ellipse at 91% 82%,rgba(177,126,77,.105) 0 2%,transparent 13%),
+    radial-gradient(ellipse at 76% 18%,rgba(190,150,102,.075) 0 1%,transparent 10%),
+    radial-gradient(ellipse at 38% 95%,rgba(154,111,73,.065) 0 1.2%,transparent 11%),
+    repeating-linear-gradient(180deg,transparent 0 24px,rgba(157,139,151,.20) 24px 25px),
+    linear-gradient(135deg,#f8f0df 0%,#f1e4cf 48%,#f7eddb 100%)!important;
+  background-blend-mode:multiply, multiply, multiply, multiply,normal,normal!important;
+  box-shadow:inset 0 0 22px rgba(126,88,57,.075),inset 0 0 2px rgba(121,82,54,.16)!important;
+}
+.journal-page:before{
+  content:"";position:absolute;inset:7px;z-index:1;pointer-events:none;border-radius:7px;
+  background:radial-gradient(ellipse at 0 0,rgba(150,104,67,.10),transparent 25%),radial-gradient(ellipse at 100% 100%,rgba(150,104,67,.085),transparent 28%);
+  opacity:.72;
+}
+.journal-page-date{
+  position:relative!important;z-index:3!important;
+  height:25px!important;margin:0 0 13px!important;padding:0 3px 0 0!important;
+  justify-content:flex-end!important;text-align:right!important;
+  border:0!important; /* remove the old pink divider line */
+  color:#aa806d!important;
+}
+.journal-page-writing,.journal-turn-writing-copy{
+  color:var(--journal-ink,#765564)!important;
+  position:relative!important;z-index:2!important;
+}
+/* Tiny margin doodles stay on the paper and are cloned onto the animated page faces. */
+.journal-page .journal-corner-doodle{
+  position:absolute;z-index:4;pointer-events:none;user-select:none;
+  color:rgba(165,119,126,.60);font-family:Georgia,serif;line-height:1;
+  text-shadow:0 1px 0 rgba(255,255,255,.45);
+}
+.journal-page .journal-doodle-top{top:10px;left:12px;font-size:15px;transform:rotate(-13deg)}
+.journal-page .journal-doodle-bottom{right:13px;bottom:9px;font-size:17px;transform:rotate(10deg)}
+.journal-page .journal-doodle-side{left:10px;bottom:39px;font-size:11px;opacity:.72;transform:rotate(-8deg)}
+/* A very light, intermittent sparkle drift; never intercepts typing. */
+.journal-idle-glitter{position:absolute;inset:0;z-index:120;overflow:hidden;pointer-events:none;opacity:0;transition:opacity .5s ease}
+.journal-book.is-open .journal-idle-glitter{opacity:1}
+.journal-idle-glitter i{position:absolute;color:rgba(255,255,255,.82);font-style:normal;font-size:10px;filter:drop-shadow(0 0 3px rgba(204,157,165,.35));animation:journalGlitterDrift 7.8s ease-in-out infinite;opacity:0}
+.journal-idle-glitter i:nth-child(1){left:13%;top:24%;animation-delay:.6s}
+.journal-idle-glitter i:nth-child(2){left:37%;top:72%;font-size:8px;animation-delay:3.1s}
+.journal-idle-glitter i:nth-child(3){left:72%;top:19%;font-size:9px;animation-delay:1.8s}
+.journal-idle-glitter i:nth-child(4){left:88%;top:67%;font-size:11px;animation-delay:4.4s}
+.journal-idle-glitter i:nth-child(5){left:56%;top:42%;font-size:7px;animation-delay:5.6s}
+@keyframes journalGlitterDrift{0%,68%,100%{opacity:0;transform:translate3d(0,5px,0) scale(.65) rotate(0)}74%{opacity:.68}88%{opacity:.38;transform:translate3d(7px,-13px,0) scale(1) rotate(35deg)}}
+/* Ribbon bookmark sits at the spine, with its bow peeking above the paper. */
+.journal-ribbon-bookmark{position:absolute;left:50%;top:-7px;z-index:150;width:12px;height:calc(100% + 9px);transform:translateX(-50%);pointer-events:none;opacity:0;transition:opacity .35s ease}
+.journal-book.is-open .journal-ribbon-bookmark,.journal-book.is-opening.cover-opened .journal-ribbon-bookmark{opacity:1}
+.journal-ribbon-bookmark:before{content:"";position:absolute;top:8px;bottom:0;left:2px;width:8px;background:linear-gradient(90deg,#a94f70,#e28da8 45%,#bd6382);clip-path:polygon(0 0,100% 0,100% 100%,50% 91%,0 100%);filter:drop-shadow(1px 2px 2px rgba(92,49,65,.20))}
+.journal-ribbon-bookmark:after{content:"";position:absolute;top:0;left:-8px;width:28px;height:18px;background:radial-gradient(ellipse at 25% 50%,#e7a0b5 0 32%,#b85e7c 34% 39%,transparent 42%),radial-gradient(ellipse at 75% 50%,#e7a0b5 0 32%,#b85e7c 34% 39%,transparent 42%),radial-gradient(circle at 50% 52%,#f4c3d0 0 18%,#b85e7c 20% 28%,transparent 30%);filter:drop-shadow(0 1px 1px rgba(92,49,65,.24))}
+/* Right-edge settings drawer, hidden until the gear is clicked. */
+.shared-journal-window{position:relative}
+.journal-settings-toggle{font-size:14px!important;line-height:1!important;width:27px!important;height:25px!important;border-radius:7px!important;color:#a76d84!important}
+.journal-settings-drawer{position:absolute;z-index:500;right:0;top:34px;bottom:0;width:205px;max-width:75%;padding:17px 15px;background:linear-gradient(145deg,#fff8f1,#f1dfd7);border-left:1px solid rgba(177,125,142,.34);box-shadow:-7px 4px 18px rgba(86,52,65,.14);transform:translateX(105%);visibility:hidden;opacity:0;transition:transform .28s ease,opacity .22s ease,visibility .28s;box-sizing:border-box}
+.journal-settings-drawer.is-visible{transform:translateX(0);visibility:visible;opacity:1}
+.journal-settings-heading{font:17px 'Itim',cursive;color:#956779;margin:2px 0 18px}
+.journal-settings-heading span{color:#c58da1;margin-left:4px}
+.journal-settings-drawer label{display:block;font:13px 'Itim',cursive;color:#896477;margin-bottom:9px}
+.journal-settings-drawer input[type=color]{width:100%;height:35px;padding:3px;border:1px solid rgba(172,119,139,.35);border-radius:8px;background:#fff9f5;cursor:pointer}
+.journal-color-presets{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.journal-color-presets button{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.9);background:var(--swatch);box-shadow:0 0 0 1px rgba(145,105,119,.28);cursor:pointer}
+.journal-settings-drawer p{font:11px/1.5 'Itim',cursive;color:#a58a91;margin-top:17px}
+@media(prefers-reduced-motion:reduce){.journal-idle-glitter i{animation:none!important;opacity:0!important}.journal-settings-drawer,.journal-ribbon-bookmark{transition:none!important}}
+@media(max-width:500px){.journal-settings-drawer{width:180px;padding:13px}.journal-page .journal-doodle-side{display:none}}
+</style>
+<script id="shared-journal-vintage-details-script">
+(function(){
+  const win=document.getElementById('sharedJournalWindow');
+  const book=document.getElementById('journalBook');
+  if(!win||!book)return;
+  const pages=book.querySelectorAll('.journal-page');
+  pages.forEach((page,index)=>{
+    if(page.querySelector('.journal-botanical-doodle'))return;
+    const art=document.createElement('div');
+    art.className='journal-botanical-doodle '+(index%2?'journal-botanical-reverse':'');
+    art.setAttribute('aria-hidden','true');
+    art.innerHTML='<svg viewBox="0 0 220 300" xmlns="http://www.w3.org/2000/svg" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 282 C65 238 72 192 106 151 S161 79 190 18" stroke-width=2.1/><path d="M67 226 C35 214 26 191 31 174 C52 178 69 194 67 226Z" stroke-width=1.7/><path d="M84 198 C112 194 130 176 132 155 C107 157 89 172 84 198Z" stroke-width=1.7/><path d="M117 143 C91 126 86 103 97 85 C118 98 127 119 117 143Z" stroke-width=1.7/><path d="M143 105 C168 103 187 87 191 67 C166 67 148 82 143 105Z" stroke-width=1.7/><path d="M163 72 C142 56 139 37 150 22 C169 34 176 53 163 72Z" stroke-width=1.7/><path d="M190 18 C180 5 185 -7 198 -11 C209 0 204 13 190 18Z" stroke-width=1.5/><path d="M181 25 C169 15 168 3 176 -4 M193 21 C207 18 215 8 213 -2" stroke-width=1.4/><path d="M186 15 C180 2 185 -9 198 -11 C210 -5 209 9 198 17 C193 20 189 18 186 15Z" stroke-width=1.8/><path d="M192 2 C187 7 188 13 194 16 M199 -5 C203 1 201 8 196 11" stroke-width=1.1/><path d="M31 174 C43 185 53 202 59 216 M132 155 C118 169 101 184 88 193 M97 85 C107 101 113 120 115 135 M191 67 C175 80 159 93 147 101" stroke-width=1.05 opacity=".75"/></g><path d="M184 14 C180 3 188 -7 198 -7 C208 -3 208 8 199 16 C193 20 187 19 184 14Z" fill="currentColor" opacity=".13"/></svg>';
+    page.appendChild(art);
+  });
+  if(!book.querySelector('.journal-ribbon-bookmark')){
+    const ribbon=document.createElement('div');ribbon.className='journal-ribbon-bookmark';ribbon.setAttribute('aria-hidden','true');
+    ribbon.innerHTML='<span class="journal-ribbon-tail"></span><span class="journal-ribbon-bow-left"></span><span class="journal-ribbon-bow-right"></span><span class="journal-ribbon-bow-knot"></span>';
+    book.appendChild(ribbon);
+  }
+  if(!book.querySelector('.journal-idle-glitter')){
+    const glitter=document.createElement('div');glitter.className='journal-idle-glitter';glitter.setAttribute('aria-hidden','true');
+    glitter.innerHTML='<i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i>';book.appendChild(glitter);
+  }
+  const toggle=document.getElementById('journalSettingsToggle');
+  const drawer=document.getElementById('journalSettingsDrawer');
+  const picker=document.getElementById('journalFontColor');
+  const inkKey='sharedJournalFontColor';
+  const pageInkKey='sharedJournalPageInk:';
+  let selectedInk='#765564';
+  let lastWritingSide='right';
+  try{selectedInk=localStorage.getItem(inkKey)||selectedInk}catch(e){}
+  const getPageNumber=(side)=>{
+    const spread=Number(win.dataset.currentSpread||0);
+    return spread*2+(side==='left'?1:2);
+  };
+  const applyInk=(color)=>{
+    if(!/^#[0-9a-f]{6}$/i.test(color))return;
+    selectedInk=color;
+    if(picker)picker.value=color;
+    try{localStorage.setItem(inkKey,color)}catch(e){}
+    // Never recolor text that has already been written. The selected ink is
+    // applied to the currently visible page only when that page is still blank.
+    const active=document.activeElement;
+    const target=active===document.getElementById('journalWritingLeft')?'left':
+      active===document.getElementById('journalWritingRight')?'right':null;
+    const candidates=target?[target]:[lastWritingSide,lastWritingSide==='left'?'right':'left'];
+    for(const side of candidates){
+      const input=document.getElementById(side==='left'?'journalWritingLeft':'journalWritingRight');
+      if(input&&!String(input.innerText||input.textContent||'').trim()){
+        const number=getPageNumber(side);
+        try{localStorage.setItem(pageInkKey+number,color)}catch(e){}
+        input.style.setProperty('--page-ink',color);
+        window.__saveSharedJournalEditor?.(input);
+        break;
       }
-      offset += paragraph.length;
-      if (paragraphIndex < paragraphs.length - 1) {
-        offset += 1;
+    }
+  };
+  const restorePageInk=()=>{
+    ['left','right'].forEach(side=>{
+      const input=document.getElementById(side==='left'?'journalWritingLeft':'journalWritingRight');
+      if(!input)return;
+      const number=getPageNumber(side);
+      let color='#765564';
+      try{color=localStorage.getItem(pageInkKey+number)||color}catch(e){}
+      input.style.setProperty('--page-ink',color);
+    });
+  };
+  restorePageInk();
+  win.addEventListener('sharedjournalspreadchange',restorePageInk);
+  win.addEventListener('focusin',event=>{
+    if(event.target?.id==='journalWritingLeft'||event.target?.id==='journalWritingRight'){
+      const side=event.target.id==='journalWritingLeft'?'left':'right';
+      lastWritingSide=side;
+      const number=getPageNumber(side);
+      let color=selectedInk;
+      try{color=localStorage.getItem(pageInkKey+number)||color}catch(e){}
+      if(!String(event.target.innerText||event.target.textContent||'').trim())event.target.style.setProperty('--page-ink',color);
+    }
+  });
+  if(toggle&&drawer){
+    toggle.addEventListener('click',()=>{
+      const open=!drawer.classList.contains('is-visible');
+      drawer.classList.toggle('is-visible',open);drawer.setAttribute('aria-hidden',String(!open));toggle.setAttribute('aria-expanded',String(open));
+    });
+    win.addEventListener('click',(event)=>{
+      if(drawer.classList.contains('is-visible')&&!drawer.contains(event.target)&&!toggle.contains(event.target)){
+        drawer.classList.remove('is-visible');drawer.setAttribute('aria-hidden','true');toggle.setAttribute('aria-expanded','false');
       }
     });
-    return lines;
   }
-
-  function textWidth(text, font, letterSpacing){
-    const canvas = textWidth.canvas || (textWidth.canvas = document.createElement('canvas'));
-    const ctx = canvas.getContext('2d');
-    ctx.font = font;
-    const base = ctx.measureText(text).width;
-    const spacing = parseFloat(letterSpacing) || 0;
-    return base + Math.max(0, text.length - 1) * spacing;
-  }
-
-  function lineCaret(input, page, event){
-    const rect = input.getBoundingClientRect();
-    const style = getComputedStyle(input);
-    const lineHeight = parseFloat(style.lineHeight) || 25;
-    const paddingTop = parseFloat(style.paddingTop) || 0;
-    const paddingLeft = parseFloat(style.paddingLeft) || 0;
-    const paddingRight = parseFloat(style.paddingRight) || 0;
-    const usableWidth = Math.max(20, rect.width - paddingLeft - paddingRight - 2);
-    const y = Math.max(0, event.clientY - rect.top - paddingTop);
-    const targetRow = Math.max(0, Math.floor(y / lineHeight));
-    const x = Math.max(0, event.clientX - rect.left - paddingLeft);
-    const font = style.font;
-    const spacing = style.letterSpacing;
-    const value = input.value || '';
-    const lines = buildVisualLines(value, usableWidth, font, spacing, textWidth);
-
-    /* If the user clicks below the current text, create blank ruled lines so
-       the caret can genuinely sit on the selected line. */
-    while (lines.length <= targetRow) {
-      input.value += '\n';
-      lines.push({start: input.value.length, end: input.value.length});
-    }
-
-    const line = lines[targetRow] || lines[lines.length - 1];
-    const segment = input.value.slice(line.start, line.end);
-    let best = 0;
-    let bestDistance = Infinity;
-    const canvas = textWidth.canvas || document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    ctx.font = font;
-    const letterGap = parseFloat(spacing) || 0;
-    for (let i = 0; i <= segment.length; i++) {
-      const prefix = segment.slice(0, i);
-      const w = ctx.measureText(prefix).width + Math.max(0, i - 1) * letterGap;
-      const distance = Math.abs(w - x);
-      if (distance < bestDistance) {
-        bestDistance = distance;
-        best = i;
-      }
-    }
-    return Math.min(input.value.length, line.start + best);
-  }
-
-  function activatePage(page, input, event, side){
-    if (!page || !input || !book.classList.contains('is-open')) return;
-    if (event.button !== undefined && event.button !== 0) return;
-    /* A page click always activates its own textarea, even if a decorative
-       layer or the blank portion of the page was the original event target. */
-    event.preventDefault();
-    event.stopPropagation();
-    input.focus({preventScroll:true});
-    const caret = lineCaret(input, page, event);
-    input.setSelectionRange(caret, caret);
-    input.dispatchEvent(new Event('input', {bubbles:true}));
-  }
-
-  [['.journal-page-left', 'journalWritingLeft', 0],
-   ['.journal-page-right', 'journalWritingRight', 1]].forEach(([selector, inputId, side]) => {
-    const page = book.querySelector(selector);
-    const input = document.getElementById(inputId);
-    if (!page || !input) return;
-    page.addEventListener('pointerdown', event => activatePage(page, input, event, side), true);
-  });
+  if(picker)picker.addEventListener('input',()=>applyInk(picker.value));
+  drawer?.querySelectorAll('[data-journal-color]').forEach(button=>button.addEventListener('click',()=>applyInk(button.getAttribute('data-journal-color'))));
 })();
 </script>
 
+
+<style id="shared-journal-cozy-paper-and-corner-doodle">
+/* Clean, uninterrupted paper: no shaded fold, seam, or dark center crease. */
+#journalBook .journal-book-pages:before{content:none!important;display:none!important}
+#journalBook .journal-page-left{border-right:0!important}
+#journalBook .journal-page-right{border-left:0!important}
+#journalBook .journal-botanical-doodle{display:none!important}
+#journalBook .journal-page:after{
+  content:""!important;display:block!important;position:absolute!important;
+  right:12px!important;bottom:10px!important;left:auto!important;top:auto!important;
+  width:58px!important;height:48px!important;z-index:1!important;opacity:.62!important;
+  pointer-events:none!important;background-repeat:no-repeat!important;background-size:contain!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 82'%3E%3Cg fill='none' stroke='%23b47b91' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 72 Q31 48 49 56 Q66 63 89 23'/%3E%3Cpath d='M28 57 Q12 48 14 35 Q29 37 34 51'/%3E%3Cpath d='M48 55 Q48 39 63 33 Q67 48 54 58'/%3E%3Cpath d='M70 43 Q67 29 80 20 Q88 33 75 45'/%3E%3Cpath d='M87 24 Q80 11 91 5 Q99 16 87 24Z'/%3E%3Cpath d='M14 76 Q38 69 56 74' stroke-width='1.4' opacity='.7'/%3E%3C/g%3E%3C/svg%3E")!important;
+}
+#journalBook .journal-page-writing{z-index:3!important}
+#journalBook .journal-page-date{z-index:3!important}
+</style>
+
+<style id="shared-journal-loose-bow-tails">
+#journalBook .journal-ribbon-bookmark{top:-29px!important;width:96px!important;height:100px!important;overflow:visible!important}
+#journalBook .journal-ribbon-bookmark .journal-bow-art{display:block!important;width:96px!important;height:94px!important;overflow:visible!important;position:absolute!important;top:0!important;left:0!important}
+#journalBook .journal-ribbon-bookmark .ribbon-body{filter:drop-shadow(1px 2px 2px rgba(93,45,64,.22))}
+</style>
+
+<style id="shared-journal-settings-studio-redesign">
+.journal-settings-drawer{
+  width:246px!important;max-width:min(78vw,246px)!important;
+  padding:19px 17px 18px!important;overflow-y:auto!important;overflow-x:hidden!important;
+  border:1px solid rgba(188,132,151,.55)!important;
+  border-radius:25px 13px 25px 13px!important;
+  background:linear-gradient(155deg,rgba(255,251,246,.99),rgba(247,229,224,.98) 58%,rgba(239,222,222,.98))!important;
+  box-shadow:-10px 8px 25px rgba(93,59,75,.18),inset 0 1px 0 rgba(255,255,255,.95)!important;
+  scrollbar-width:thin;scrollbar-color:#d6a7b7 transparent;
+}
+.journal-settings-heading{
+  font:600 19px 'Itim',cursive!important;color:#80586a!important;
+  padding:0 0 11px!important;margin:0 0 16px!important;
+  border-bottom:1px dashed rgba(172,119,139,.48)!important;letter-spacing:.25px!important;
+}
+.journal-settings-heading span{font-size:13px!important;color:#b77d94!important}
+.journal-settings-drawer label{
+  font:600 12px 'Quicksand',sans-serif!important;letter-spacing:.45px!important;
+  text-transform:uppercase!important;color:#987080!important;margin:14px 0 9px!important;
+}
+.journal-settings-drawer input[type=color]{height:40px!important;padding:4px!important;border-radius:13px!important;background:#fffaf7!important;border:1px solid rgba(177,126,145,.38)!important;box-shadow:0 2px 6px rgba(105,67,82,.07)!important}
+.journal-color-presets{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:9px!important;margin:11px 1px 17px!important}
+.journal-color-presets button{
+  width:100%!important;height:27px!important;border-radius:10px 5px 10px 5px!important;
+  border:2px solid rgba(255,255,255,.92)!important;box-shadow:0 0 0 1px rgba(145,105,119,.28),0 2px 5px rgba(105,67,82,.10)!important;
+  transition:transform .18s ease,box-shadow .18s ease!important;cursor:pointer!important
+}
+.journal-color-presets button:hover{transform:translateY(-2px) rotate(-3deg)!important;box-shadow:0 0 0 1px rgba(145,105,119,.4),0 4px 8px rgba(105,67,82,.14)!important}
+.journal-settings-drawer select#journalFontFamily{display:none!important}
+.journal-font-preview-list{display:grid;gap:7px;margin:8px 0 13px}
+.journal-font-preview{
+  display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;padding:8px 10px 7px!important;
+  border:1px solid rgba(188,139,155,.38)!important;border-radius:12px 6px 12px 6px!important;
+  background:rgba(255,253,249,.76)!important;color:#80586a!important;text-align:left!important;
+  box-shadow:0 2px 6px rgba(111,74,89,.055)!important;cursor:pointer!important;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease!important
+}
+.journal-font-preview:hover{transform:translateX(-2px)!important;background:#fff!important;border-color:rgba(176,112,139,.72)!important}
+.journal-font-preview[aria-pressed="true"]{background:#f8e8e9!important;border-color:#bd8198!important;box-shadow:inset 0 0 0 1px rgba(189,129,152,.16),0 2px 7px rgba(111,74,89,.08)!important}
+.journal-font-preview-name{font-size:17px;line-height:1.15;color:#795466}
+.journal-font-preview-note{font:10px 'Quicksand',sans-serif;color:#a18490;letter-spacing:.2px}
+.journal-settings-drawer p{font:10px/1.55 'Quicksand',sans-serif!important;color:#9b7b88!important;margin:12px 0 0!important;padding-top:10px;border-top:1px dashed rgba(172,119,139,.4)}
+@media(max-width:500px){.journal-settings-drawer{width:224px!important;max-width:calc(100vw - 38px)!important;padding:15px 13px!important}}
+</style>
+
+<script id="shared-journal-final-interaction-fixes">
+(function(){
+  const win=document.getElementById('sharedJournalWindow');
+  const book=document.getElementById('journalBook');
+  const title=document.getElementById('sharedJournalTitlebar');
+  const toggle=document.getElementById('journalSettingsToggle');
+  const drawer=document.getElementById('journalSettingsDrawer');
+  const fontSelect=document.getElementById('journalFontFamily');
+  if(!win||!book||!title)return;
+
+  // Build real type samples from the same font options used by the editor.
+  if(fontSelect&&!drawer.querySelector('.journal-font-preview-list')){
+    const list=document.createElement('div');list.className='journal-font-preview-list';
+    [...fontSelect.options].forEach(option=>{
+      const button=document.createElement('button');button.type='button';button.className='journal-font-preview';
+      button.dataset.font=option.value;button.setAttribute('aria-pressed',String(option.value===fontSelect.value));
+      const name=document.createElement('span');name.className='journal-font-preview-name';name.textContent=option.value;name.style.fontFamily='"'+option.value+'",cursive';
+      const note=document.createElement('span');note.className='journal-font-preview-note';note.textContent=option.textContent.split('—')[1]?.trim()||'handwriting sample';
+      button.append(name,note);
+      button.addEventListener('click',()=>{
+        fontSelect.value=option.value;
+        fontSelect.dispatchEvent(new Event('change',{bubbles:true}));
+        list.querySelectorAll('.journal-font-preview').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      });
+      list.appendChild(button);
+    });
+    fontSelect.insertAdjacentElement('afterend',list);
+    const label=drawer.querySelector('.journal-font-label');
+    if(label)label.textContent='handwriting style · tap to preview';
+  }
+
+  // The original open routine owns first-open centering; do not wrap it in a
+  // second centering pass. This also preserves a position chosen by dragging.
+
+  // Replace both older drag handlers with one pointer-captured, frame-coalesced
+  // handler. The capture listener stops the legacy bubbling handler entirely.
+  let drag=null,frame=0,lastEvent=null;
+  const move=event=>{
+    if(!drag)return;lastEvent=event;
+    if(frame)return;
+    frame=requestAnimationFrame(()=>{
+      frame=0;if(!drag||!lastEvent)return;
+      const e=lastEvent;lastEvent=null;
+      const maxLeft=Math.max(0,window.innerWidth-win.offsetWidth);
+      const maxTop=Math.max(0,window.innerHeight-48);
+      win.style.left=Math.min(maxLeft,Math.max(0,drag.left+e.clientX-drag.x))+'px';
+      win.style.top=Math.min(maxTop,Math.max(0,drag.top+e.clientY-drag.y))+'px';
+    });
+  };
+  const stop=event=>{
+    if(!drag)return;
+    if(event&&drag.pointerId!==event.pointerId)return;
+    drag=null;if(frame){cancelAnimationFrame(frame);frame=0}lastEvent=null;
+    win.style.transition='';
+    win.classList.remove('is-journal-dragging');
+    document.removeEventListener('pointermove',move,true);
+    document.removeEventListener('pointerup',stop,true);
+    document.removeEventListener('pointercancel',stop,true);
+    document.removeEventListener('lostpointercapture',stop,true);
+  };
+  title.addEventListener('pointerdown',event=>{
+    if(event.button!==0||event.target.closest('.window-controls'))return;
+    event.preventDefault();event.stopImmediatePropagation();
+    if(typeof bringWindowToFront==='function')bringWindowToFront(win);
+    const rect=win.getBoundingClientRect();
+    win.classList.remove('shared-journal-centered');win.classList.add('shared-journal-user-positioned','is-journal-dragging');
+    win.style.position='fixed';win.style.transition='none';win.style.transform='none';
+    win.style.left=rect.left+'px';win.style.top=rect.top+'px';win.style.right='auto';win.style.bottom='auto';
+    win.dataset.journalUserPositioned='true';
+    drag={x:event.clientX,y:event.clientY,left:rect.left,top:rect.top,pointerId:event.pointerId};
+    try{title.setPointerCapture(event.pointerId)}catch(_){}
+    document.addEventListener('pointermove',move,true);
+    document.addEventListener('pointerup',stop,true);
+    document.addEventListener('pointercancel',stop,true);
+    document.addEventListener('lostpointercapture',stop,true);
+  },true);
+  window.addEventListener('resize',()=>{
+    if(drag)return;
+    if(win.dataset.journalUserPositioned==='true'&&win.style.display!=='none'){
+      const r=win.getBoundingClientRect();
+      win.style.left=Math.max(0,Math.min(window.innerWidth-win.offsetWidth,r.left))+'px';
+      win.style.top=Math.max(0,Math.min(window.innerHeight-48,r.top))+'px';
+    }
+  });
+  if(toggle&&drawer){
+    toggle.addEventListener('click',()=>{
+      requestAnimationFrame(()=>{
+        const open=drawer.classList.contains('is-visible');
+        toggle.setAttribute('aria-expanded',String(open));drawer.setAttribute('aria-hidden',String(!open));
+      });
+    });
+  }
+})();
+</script>
+
+
+
+<!-- Shared journal: final settings polish and immediate handwriting-font refresh -->
+<style id="shared-journal-final-settings-polish">
+  /* Keep the existing drawer and visual language, while making every control fit. */
+  #journalSettingsDrawer{
+    box-sizing:border-box!important;max-height:calc(100% - 44px)!important;
+    overflow-x:hidden!important;overflow-y:auto!important;
+    scrollbar-width:thin!important;overscroll-behavior:contain!important;
+  }
+  #journalSettingsDrawer .journal-settings-heading{
+    font-size:16px!important;line-height:1.2!important;margin-bottom:11px!important;
+  }
+  #journalSettingsDrawer label{
+    font-size:10px!important;line-height:1.25!important;margin:9px 0 6px!important;
+    letter-spacing:.35px!important;
+  }
+  /* Keep the legacy controls in the DOM for the existing colour/font logic,
+     but show only the 15 curated swatches and the font preview buttons. */
+  #journalFontColor,#journalFontFamily{display:none!important;visibility:hidden!important;}
+  #journalSettingsDrawer .journal-color-presets{
+    display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    gap:7px!important;margin:7px 1px 12px!important;
+  }
+  #journalSettingsDrawer .journal-color-presets button{
+    display:block!important;min-width:0!important;width:100%!important;height:25px!important;
+    padding:0!important;background:var(--swatch)!important;border-radius:9px 5px 9px 5px!important;
+    border:2px solid rgba(255,255,255,.94)!important;
+    box-shadow:0 0 0 1px rgba(125,91,98,.28),0 2px 4px rgba(87,60,68,.10)!important;
+  }
+  #journalSettingsDrawer .journal-color-presets button[aria-pressed="true"]{
+    outline:2px solid #987083!important;outline-offset:2px!important;
+  }
+  #journalSettingsDrawer .journal-font-label{margin:4px 0 5px!important;}
+  #journalSettingsDrawer .journal-font-preview-list{
+    gap:5px!important;margin:4px 0 8px!important;
+  }
+  #journalSettingsDrawer .journal-font-preview{
+    box-sizing:border-box!important;min-width:0!important;padding:6px 8px 5px!important;
+    gap:1px!important;border-radius:10px 5px 10px 5px!important;
+  }
+  #journalSettingsDrawer .journal-font-preview-name{font-size:15px!important;line-height:1.12!important;}
+  #journalSettingsDrawer .journal-font-preview-note{font-size:9px!important;line-height:1.2!important;}
+  #journalSettingsDrawer>p{font-size:9px!important;line-height:1.35!important;margin-top:7px!important;padding-top:7px!important;}
+  /* Raise the tied bow slightly so it sits against the spine's upper edge. */
+  #journalBook .journal-ribbon-bookmark .journal-bow-art{
+    transform:translateY(-7px)!important;transform-origin:top center!important;
+  }
+  @media(max-width:500px){
+    #journalSettingsDrawer{max-width:calc(100vw - 38px)!important;padding:13px 12px!important;}
+    #journalSettingsDrawer .journal-color-presets{gap:6px!important;}
+    #journalSettingsDrawer .journal-color-presets button{height:23px!important;}
+  }
+</style>
+<script id="shared-journal-immediate-font-and-preset-state-fix">
+(function(){
+  const win=document.getElementById('sharedJournalWindow');
+  const drawer=document.getElementById('journalSettingsDrawer');
+  const select=document.getElementById('journalFontFamily');
+  const colorPicker=document.getElementById('journalFontColor');
+  const editors=[document.getElementById('journalWritingLeft'),document.getElementById('journalWritingRight')].filter(Boolean);
+  if(!win||!drawer||!select||!editors.length)return;
+  const fontKey='sharedJournalHandwritingFont';
+  const colorKey='sharedJournalFontColor';
+  const safeFont=font=>['Caveat','Itim','Patrick Hand','Kalam','Shadows Into Light'].includes(font)?font:'Caveat';
+  const paintFont=(font,persistPageContent=false)=>{
+    font=safeFont(font);
+    /* Set the editor's inherited face immediately. This updates already-rendered
+       writing as well as the caret's default face, without waiting for a page turn. */
+    editors.forEach((editor,index)=>{
+      const family='"'+font+'", cursive';
+      editor.style.setProperty('font-family',family,'important');
+      editor.style.setProperty('--journal-handwriting-font',family);
+      /* Existing rich-text nodes can carry an older inline font face. Update
+         those nodes too, otherwise the new setting appears only after the
+         page content is rebuilt during a turn. Other formatting is untouched. */
+      editor.querySelectorAll('*').forEach(node=>node.style.setProperty('font-family',family,'important'));
+      /* Initialising the settings panel must never save the currently visible
+         (temporarily empty) editor over the first two cached page records. The
+         original startup call did exactly that before Supabase finished loading. */
+      const hasWriting=String(editor.innerText||editor.textContent||'').trim().length>0;
+      if(persistPageContent && hasWriting){
+        const spread=Math.max(0,Number(win.dataset.currentSpread||0));
+        const pageNumber=spread*2+index+1;
+        const record=window.__sharedJournalPageMap?.get?.(pageNumber);
+        if(record)record.content=editor.innerHTML;
+        window.__saveSharedJournalEditor?.(editor);
+      }
+    });
+    const previews=drawer.querySelectorAll('.journal-font-preview');
+    previews.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.font===font)));
+    try{localStorage.setItem(fontKey,font);}catch(_){ }
+    if(document.fonts&&document.fonts.load){
+      document.fonts.load('16px "'+font+'"').then(()=>{
+        editors.forEach(editor=>{
+          const family='"'+font+'", cursive';
+          editor.style.setProperty('font-family',family,'important');
+          editor.querySelectorAll('*').forEach(node=>node.style.setProperty('font-family',family,'important'));
+        });
+      }).catch(()=>{});
+    }
+  };
+  let savedFont='Caveat';
+  try{savedFont=localStorage.getItem(fontKey)||savedFont;}catch(_){ }
+  select.value=safeFont(savedFont);
+  paintFont(select.value);
+  /* Capture phase runs before the older execCommand handler, so the new face
+     is visible immediately even when the editor already contains text. */
+  document.addEventListener('change',event=>{
+    if(event.target===select)paintFont(select.value,true);
+  },true);
+  /* Keep the selected vintage ink visibly marked, including after reopening. */
+  const syncColor=()=>{
+    let color='#765564';
+    try{color=localStorage.getItem(colorKey)||color;}catch(_){ }
+    drawer.querySelectorAll('[data-journal-color]').forEach(button=>{
+      button.setAttribute('aria-pressed',String(button.getAttribute('data-journal-color').toLowerCase()===String(color).toLowerCase()));
+    });
+  };
+  syncColor();
+  document.addEventListener('click',event=>{
+    if(event.target&&event.target.closest&&event.target.closest('#journalSettingsDrawer [data-journal-color]')){
+      requestAnimationFrame(syncColor);
+    }
+  },true);
+  if(colorPicker){
+    colorPicker.addEventListener('input',syncColor);
+  }
+})();
+</script>
+
+
+<style id="shared-journal-minimize-fixed-position-final-fix">
+/* The Journal settings layer contains a legacy position:relative!important rule.
+   During minimization the centered/user-positioned classes are intentionally
+   removed, so this state-specific rule must keep the window fixed to the
+   viewport while its inline left/top and dock transform animate. */
+#sharedJournalWindow.shared-journal-minimizing {
+  position:fixed!important;
+  right:auto!important;
+  bottom:auto!important;
+  margin:0!important;
+  transform:var(--journal-minimize-transform,none)!important;
+}
+</style>
 </body>
 </html>
 
@@ -10930,5 +11628,595 @@ html body .deep-thoughts-release-btn:disabled {
 }
 </style>
 
-</body>
-</html>
+
+
+<style id="shared-journal-nine-detail-fixes">
+/* 1. Keep the journal's first-open position mathematically centered. */
+.shared-journal-window:not(.minimized){transform:none!important}
+.shared-journal-window.is-journal-dragging{transition:none!important;cursor:grabbing!important}
+#sharedJournalTitlebar{cursor:grab!important;touch-action:none}
+#sharedJournalTitlebar:active{cursor:grabbing!important}
+
+/* 3. Page-turn sheets retain the same warm paper tone instead of darkening mid-flip. */
+#journalBook .journal-live-turn-leaf{filter:none!important;background:linear-gradient(90deg,#f8f0df 0%,#f1e4cf 48%,#f7eddb 100%)!important}
+#journalBook .journal-live-turn-front:after,#journalBook .journal-live-turn-back:after{display:none!important;opacity:0!important}
+#journalBook .journal-live-turn-front,#journalBook .journal-live-turn-back{
+  background-color:#f2e6d2!important;
+  background-image:repeating-linear-gradient(180deg,transparent 0 24px,rgba(157,139,151,.20) 24px 25px),linear-gradient(135deg,#f8f0df 0%,#f1e4cf 48%,#f7eddb 100%)!important;
+  box-shadow:inset 0 0 14px rgba(126,88,57,.045)!important;
+}
+#journalBook .journal-user-turn-leaf{filter:none!important}
+
+/* 4. Ink belongs to each page, not to the whole book. Existing saved writing is preserved. */
+#journalWritingLeft,#journalWritingRight{color:var(--page-ink,#765564)!important}
+.journal-turn-writing-copy{color:var(--page-ink,#765564)!important}
+
+/* 5. The settings gear uses exactly the same window-control dimensions as minimize/close. */
+#journalSettingsToggle.window-btn{width:24px!important;height:24px!important;min-width:24px!important;min-height:24px!important;padding:0!important;border-radius:50%!important;font-size:12px!important;line-height:1!important;display:flex!important;align-items:center!important;justify-content:center!important}
+
+/* 6–7. A slim, right-aligned settings card with soft corners and oversized hand-drawn botanicals. */
+.shared-journal-window{position:relative!important}
+.journal-settings-drawer{
+  position:absolute!important;z-index:500!important;right:0!important;top:34px!important;bottom:10px!important;
+  width:158px!important;max-width:calc(100% - 18px)!important;padding:16px 12px!important;
+  overflow:hidden!important;border:1px solid rgba(191,137,155,.48)!important;
+  border-radius:24px 12px 24px 12px!important;
+  background:linear-gradient(145deg,rgba(255,250,246,.98),rgba(246,224,230,.97) 58%,rgba(237,222,239,.97))!important;
+  box-shadow:-7px 5px 20px rgba(102,63,81,.18),inset 0 1px 0 rgba(255,255,255,.95)!important;
+  transform:translateX(calc(100% + 8px))!important;
+}
+.journal-settings-drawer.is-visible{transform:translateX(0)!important}
+.journal-settings-drawer:before{
+  content:"";position:absolute;inset:-14px -20px;pointer-events:none;opacity:.28;z-index:0;
+  background-repeat:no-repeat;background-position:bottom -7px right -22px;background-size:190px 245px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 190 245'%3E%3Cg fill='none' stroke='%23b87994' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 236C50 191 64 151 86 111S130 49 166 8'/%3E%3Cpath d='M51 188C24 181 13 160 19 141c20 4 35 20 32 47Zm23-42c26-1 43-16 45-36-24 0-41 14-45 36Zm33-50c-20-14-22-34-11-49 19 12 25 31 11 49Zm31-41c23-2 37-16 39-34-21 1-36 14-39 34Z'/%3E%3Cpath d='M158 17c-4-13 5-24 17-24 12 8 10 21-1 29-7 4-13 2-16-5Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.journal-settings-drawer>*{position:relative;z-index:1}
+.journal-settings-heading{font-size:16px!important;margin:1px 0 17px!important;white-space:nowrap}
+.journal-settings-drawer label{font-size:12px!important;line-height:1.35!important}
+.journal-settings-drawer input[type=color]{height:32px!important;border-radius:10px!important}
+.journal-color-presets{gap:7px!important}
+.journal-color-presets button{width:19px!important;height:19px!important}
+.journal-settings-drawer p{font-size:10px!important}
+
+/* 8. Original botanical pen-and-ink drawings: long rose stems and leaves, not glyphs. */
+.journal-page .journal-botanical-doodle{
+  position:absolute!important;z-index:1!important;right:4px!important;top:18%!important;
+  width:34%!important;height:70%!important;pointer-events:none!important;user-select:none!important;
+  color:rgba(159,103,119,.48)!important;opacity:.72!important;overflow:visible!important;
+}
+.journal-page .journal-botanical-doodle svg{display:block;width:100%;height:100%;overflow:visible}
+.journal-page .journal-botanical-reverse{left:3px!important;right:auto!important;transform:scaleX(-1) rotate(-4deg)!important;opacity:.64!important}
+.journal-page-left .journal-botanical-doodle{right:5px!important;width:31%!important}
+.journal-page-right .journal-botanical-doodle{left:5px!important;right:auto!important;width:29%!important;transform:scaleX(-1) rotate(-5deg)!important}
+#journalBook .journal-page-writing,#journalBook .journal-page-date{z-index:3!important}
+
+/* 9. A dimensional satin ribbon with a folded fishtail and a proper tied bow. */
+.journal-ribbon-bookmark{left:50%!important;top:-13px!important;width:24px!important;height:calc(100% + 17px)!important;transform:translateX(-50%)!important;z-index:150!important;filter:drop-shadow(2px 3px 3px rgba(74,39,54,.25))!important}
+.journal-ribbon-bookmark:before,.journal-ribbon-bookmark:after{content:none!important;display:none!important}
+.journal-ribbon-tail{
+  position:absolute;top:17px;bottom:0;left:7px;width:10px;
+  background:linear-gradient(90deg,#a94f70 0%,#d97e9b 24%,#f1b1c3 49%,#cb6e8c 74%,#98445f 100%);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 91%,0 100%);
+  border-radius:2px 2px 1px 1px;
+  box-shadow:inset 1px 0 2px rgba(255,255,255,.55),inset -2px 0 3px rgba(91,35,56,.22);
+}
+.journal-ribbon-bow-left,.journal-ribbon-bow-right{
+  position:absolute;top:1px;width:16px;height:13px;display:block;
+  background:linear-gradient(145deg,#f7c4d2 0%,#df8ba5 42%,#b95778 100%);
+  border:1px solid rgba(151,65,95,.65);box-shadow:inset 1px 1px 2px rgba(255,255,255,.72),0 2px 3px rgba(89,43,59,.23);
+}
+.journal-ribbon-bow-left{left:-1px;border-radius:85% 24% 75% 35%;transform:rotate(24deg) skewY(7deg)}
+.journal-ribbon-bow-right{right:-1px;border-radius:24% 85% 35% 75%;transform:rotate(-24deg) skewY(-7deg)}
+.journal-ribbon-bow-knot{
+  position:absolute;top:4px;left:8px;width:9px;height:9px;border-radius:45% 55% 48% 52%;
+  background:radial-gradient(circle at 30% 25%,#ffe8ee 0%,#efb1c3 35%,#c76887 78%,#9e4c69 100%);
+  border:1px solid rgba(150,65,94,.62);box-shadow:0 1px 3px rgba(78,35,51,.3),inset 0 1px 1px rgba(255,255,255,.85);
+}
+@media(max-width:500px){
+  .journal-settings-drawer{width:150px!important;padding:13px 10px!important}
+  .journal-page .journal-botanical-doodle{opacity:.48!important;width:25%!important}
+  .journal-ribbon-bookmark{transform:translateX(-50%) scale(.9)!important;transform-origin:top center!important}
+}
+</style>
+
+
+<style id="shared-journal-precision-editor-and-visual-fixes">
+/* Rich handwritten editor: retain the existing ruled-page geometry. */
+#journalBook .journal-page-writing[contenteditable="true"]{
+  display:block!important;white-space:pre-wrap!important;overflow-wrap:anywhere!important;
+  outline:none!important;caret-color:#8f536d!important;user-select:text!important;
+  -webkit-user-select:text!important;tab-size:2!important;
+}
+#journalBook .journal-page-writing[contenteditable="true"]:empty:before{content:"";display:inline}
+#journalBook .journal-page-writing[contenteditable="true"] span{line-height:inherit}
+#journalBook .journal-page-writing[contenteditable="true"] font{font:inherit}
+.journal-settings-drawer select#journalFontFamily{
+  display:block!important;width:100%!important;max-width:100%!important;margin:7px 0 12px!important;
+  padding:8px 7px!important;border:1px solid rgba(190,135,155,.55)!important;
+  border-radius:12px!important;background:rgba(255,255,255,.78)!important;
+  color:#80586a!important;font:12px 'Quicksand',sans-serif!important;outline:none!important;
+}
+.journal-settings-drawer .journal-font-label{display:block!important;margin-top:15px!important}
+/* Remove the old mottled/crease-like paper overlays; keep the ruled lines clean. */
+#journalBook .journal-page:before,#journalBook .journal-page:after{display:none!important;content:none!important}
+#journalBook .journal-page{
+  background-color:#fffaf4!important;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 24px,rgba(174,164,184,.19) 24px 25px),linear-gradient(135deg,#fffdf8 0%,#fff9f2 54%,#fffdf9 100%)!important;
+  background-blend-mode:normal!important;
+  box-shadow:inset 0 0 0 1px rgba(197,160,151,.10)!important;
+}
+/* Absolutely no animated dark overlay or cast shadow on the turning paper itself. */
+#journalBook .journal-live-turn-leaf,
+#journalBook .journal-user-turn-leaf{filter:none!important;box-shadow:none!important;mix-blend-mode:normal!important}
+#journalBook .journal-live-turn-front,#journalBook .journal-live-turn-back{
+  background-color:#fffaf4!important;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 24px,rgba(174,164,184,.19) 24px 25px),linear-gradient(135deg,#fffdf8 0%,#fff9f2 54%,#fffdf9 100%)!important;
+  box-shadow:none!important;filter:none!important;opacity:1!important;
+}
+#journalBook .journal-live-turn-front:before,#journalBook .journal-live-turn-front:after,
+#journalBook .journal-live-turn-back:before,#journalBook .journal-live-turn-back:after{display:none!important;content:none!important}
+#journalBook .journal-turn-writing-copy{filter:none!important;text-shadow:none!important}
+/* Replace the old crease-like sprigs with friendly illustrated rose clusters. */
+#journalBook .journal-botanical-doodle{width:36%!important;height:74%!important;top:13%!important;opacity:.74!important;color:#b87991!important}
+#journalBook .journal-botanical-doodle svg{width:100%!important;height:100%!important}
+/* Centering uses fixed viewport coordinates; dragging switches to explicit pixel coordinates. */
+#sharedJournalWindow.shared-journal-centered{
+  position:fixed!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;
+  transform:translate(-50%,-50%)!important;margin:0!important;
+}
+#sharedJournalWindow.shared-journal-user-positioned{
+  position:fixed!important;right:auto!important;bottom:auto!important;transform:none!important;margin:0!important;
+}
+#sharedJournalTitlebar{touch-action:none!important;user-select:none!important;-webkit-user-select:none!important}
+#sharedJournalWindow.is-journal-dragging{transition:none!important}
+/* Larger, loose satin bow with two soft loops and naturally falling ribbon ends. */
+#journalBook .journal-ribbon-bookmark{
+  left:50%!important;top:-27px!important;width:112px!important;height:calc(100% + 30px)!important;
+  transform:translateX(-50%)!important;filter:drop-shadow(2px 4px 4px rgba(80,42,58,.25))!important;
+  overflow:visible!important;z-index:180!important;pointer-events:none!important;
+}
+#journalBook .journal-ribbon-bookmark:before,#journalBook .journal-ribbon-bookmark:after{display:none!important;content:none!important}
+#journalBook .journal-ribbon-bookmark .journal-bow-art{display:block!important;width:112px!important;height:145px!important;overflow:visible!important;position:absolute!important;top:0!important;left:0!important}
+#journalBook .journal-ribbon-bookmark .journal-bow-art .ribbon-body{filter:drop-shadow(1px 2px 2px rgba(93,45,64,.22))}
+#journalBook .journal-ribbon-bookmark .journal-bow-art .ribbon-highlight{fill:none;stroke:rgba(255,239,244,.82);stroke-width:2.2;stroke-linecap:round}
+#journalBook .journal-ribbon-bookmark .journal-bow-art .ribbon-seam{fill:none;stroke:rgba(143,61,91,.32);stroke-width:1;stroke-dasharray:2 3}
+@media(max-width:500px){#journalBook .journal-ribbon-bookmark{transform:translateX(-50%) scale(.82)!important;transform-origin:top center!important}}
+</style>
+<script id="shared-journal-rich-text-font-and-precise-window-fix">
+(function(){
+  const win=document.getElementById('sharedJournalWindow');
+  const book=document.getElementById('journalBook');
+  const title=document.getElementById('sharedJournalTitlebar');
+  const left=document.getElementById('journalWritingLeft');
+  const right=document.getElementById('journalWritingRight');
+  if(!win||!book||!left||!right)return;
+  const editors=[left,right];
+  const safeHtml=(html)=>{
+    const template=document.createElement('template');
+    template.innerHTML=String(html||'');
+    const allowed=new Set(['BR','SPAN','FONT','DIV']);
+    const clean=(node)=>{
+      [...node.childNodes].forEach(child=>{
+        if(child.nodeType===Node.TEXT_NODE)return;
+        if(child.nodeType!==Node.ELEMENT_NODE){child.remove();return;}
+        if(!allowed.has(child.tagName)){
+          const text=document.createTextNode(child.textContent||'');child.replaceWith(text);return;
+        }
+        [...child.attributes].forEach(attr=>{
+          const name=attr.name.toLowerCase();
+          if(child.tagName==='SPAN'&&name==='style'){
+            const color=child.style.color;
+            const family=child.style.fontFamily;
+            child.removeAttribute('style');
+            if(color)child.style.color=color;
+            if(family)child.style.fontFamily=family;
+          }else if(child.tagName==='FONT'&&name==='face'){
+            const face=child.getAttribute('face');child.removeAttribute('face');child.style.fontFamily=face;
+          }else child.removeAttribute(attr.name);
+        });
+        clean(child);
+      });
+    };
+    clean(template.content);
+    return template.innerHTML;
+  };
+  const textOf=(el)=>String(el.innerText||el.textContent||'').replace(/\r/g,'');
+  const pointAt=(root,offset)=>{
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+    let node,remaining=Math.max(0,offset),last=null;
+    while((node=walker.nextNode())){
+      last=node;
+      if(remaining<=node.nodeValue.length)return {node,offset:remaining};
+      remaining-=node.nodeValue.length;
+    }
+    return last?{node:last,offset:last.nodeValue.length}:{node:root,offset:root.childNodes.length};
+  };
+  editors.forEach(editor=>{
+    if(editor.dataset.richCompat==='1')return;
+    editor.dataset.richCompat='1';
+    Object.defineProperty(editor,'value',{configurable:true,get(){return textOf(editor)},set(value){
+      const raw=String(value??'');
+      if(/<(?:span|font|br|div)\b/i.test(raw))editor.innerHTML=safeHtml(raw);
+      else editor.innerHTML=raw.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\r?\n/g,'<br>');
+    }});
+    Object.defineProperty(editor,'selectionStart',{configurable:true,get(){
+      const sel=window.getSelection();if(!sel||!sel.rangeCount||!editor.contains(sel.anchorNode))return textOf(editor).length;
+      const caret=sel.getRangeAt(0).cloneRange();caret.collapse(true);
+      const end=document.createRange();end.selectNodeContents(editor);end.collapse(false);
+      // Range.toString() omits some visual line breaks created by BR/DIV nodes.
+      // Detect the true end caret explicitly so end-of-page overflow still runs
+      // after the writer has used Enter or pasted multi-line text.
+      if(caret.compareBoundaryPoints(Range.START_TO_START,end)===0)return textOf(editor).length;
+      const range=document.createRange();range.selectNodeContents(editor);range.setEnd(sel.anchorNode,sel.anchorOffset);return range.toString().length;
+    }});
+    Object.defineProperty(editor,'selectionEnd',{configurable:true,get(){
+      const sel=window.getSelection();if(!sel||!sel.rangeCount||!editor.contains(sel.focusNode))return editor.selectionStart;
+      const range=document.createRange();range.selectNodeContents(editor);range.setEnd(sel.focusNode,sel.focusOffset);return range.toString().length;
+    }});
+    editor.setSelectionRange=(start,end)=>{
+      const a=pointAt(editor,start),b=pointAt(editor,end);const range=document.createRange();
+      try{range.setStart(a.node,a.offset);range.setEnd(b.node,b.offset)}catch(e){range.selectNodeContents(editor);range.collapse(false)}
+      const sel=window.getSelection();sel.removeAllRanges();sel.addRange(range);
+    };
+    editor.addEventListener('paste',event=>{
+      event.preventDefault();const data=(event.clipboardData||window.clipboardData).getData('text/plain');
+      document.execCommand('insertText',false,data);
+    });
+  });
+  // Rich HTML is retained in Supabase; legacy plain-text pages remain readable.
+  const fontSelect=document.getElementById('journalFontFamily');
+  const picker=document.getElementById('journalFontColor');
+  const fontKey='sharedJournalHandwritingFont';
+  const inkKey='sharedJournalFontColor';
+  let selectedFont='Caveat',selectedColor='#765564',savedRange=null,lastEditor=right;
+  try{selectedFont=localStorage.getItem(fontKey)||selectedFont;selectedColor=localStorage.getItem(inkKey)||selectedColor}catch(e){}
+  const rememberRange=()=>{
+    const sel=window.getSelection();if(!sel||!sel.rangeCount)return;
+    const node=sel.anchorNode;
+    const editor=editors.find(el=>node&&(el===node||el.contains(node)));
+    if(editor){savedRange=sel.getRangeAt(0).cloneRange();lastEditor=editor;}
+  };
+  document.addEventListener('selectionchange',rememberRange);
+  editors.forEach(editor=>editor.addEventListener('focus',()=>{lastEditor=editor;}));
+  const restoreRange=()=>{
+    if(!savedRange||!lastEditor.contains(savedRange.commonAncestorContainer))return false;
+    const sel=window.getSelection();sel.removeAllRanges();sel.addRange(savedRange);return true;
+  };
+  const applyCommand=(command,value)=>{
+    lastEditor.focus({preventScroll:true});restoreRange();
+    document.execCommand(command,false,value);
+    savedRange=null;
+    lastEditor.dispatchEvent(new Event('input',{bubbles:true}));
+  };
+  const applyColor=color=>{
+    if(!/^#[0-9a-f]{6}$/i.test(color))return;
+    selectedColor=color;try{localStorage.setItem(inkKey,color)}catch(e){}
+    // execCommand colors only the current selection; a collapsed caret sets the next typed ink.
+    applyCommand('foreColor',color);
+    if(picker)picker.value=color;
+  };
+  const applyFont=font=>{
+    if(!font)return;selectedFont=font;try{localStorage.setItem(fontKey,font)}catch(e){}
+    applyCommand('fontName',font);
+    editors.forEach(editor=>{if(!editor.innerHTML.trim())editor.style.fontFamily='"'+font+'",cursive';});
+  };
+  if(fontSelect){fontSelect.value=selectedFont;fontSelect.addEventListener('change',()=>applyFont(fontSelect.value));}
+  if(picker){picker.value=selectedColor;picker.addEventListener('input',()=>applyColor(picker.value));}
+  document.querySelectorAll('#journalSettingsDrawer [data-journal-color]').forEach(button=>button.addEventListener('click',()=>applyColor(button.getAttribute('data-journal-color'))));
+  // Persist inline color/font spans, not just the editor's plain text.
+  const saveRich=()=>{
+    editors.forEach((editor,index)=>{
+      if(!editor.isConnected)return;
+      const number=Number(win.dataset.currentSpread||0)*2+index+1;
+      const record=window.__sharedJournalPageMap?.get?.(number);
+      if(record)record.content=editor.innerHTML;
+    });
+  };
+  editors.forEach(editor=>editor.addEventListener('input',()=>{saveRich();window.__saveSharedJournalEditor?.(editor);}));
+  // Replace the page-turn bookmark with a soft, loose satin bow and two falling tails.
+  const ribbon=book.querySelector('.journal-ribbon-bookmark');
+  if(ribbon){
+    ribbon.innerHTML=`<svg class="journal-bow-art" viewBox="0 0 112 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="jrSatin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe8ee"/><stop offset=".28" stop-color="#efadc0"/><stop offset=".62" stop-color="#d77998"/><stop offset="1" stop-color="#a94e70"/></linearGradient>
+        <linearGradient id="jrTail" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#a64d70"/><stop offset=".28" stop-color="#d87998"/><stop offset=".52" stop-color="#f3bdcc"/><stop offset=".78" stop-color="#cf6e8e"/><stop offset="1" stop-color="#9e4667"/></linearGradient>
+      </defs>
+      <g class="ribbon-body" stroke-linejoin="round">
+        <path d="M51 27 C34 7 10 5 9 20 C8 34 28 40 51 31 C39 25 27 19 18 18 C31 14 43 20 51 27Z" fill="url(#jrSatin)" stroke="#b85b7b" stroke-width="1.25"/>
+        <path d="M61 27 C78 7 102 5 103 20 C104 34 84 40 61 31 C73 25 85 19 94 18 C81 14 69 20 61 27Z" fill="url(#jrSatin)" stroke="#b85b7b" stroke-width="1.25"/>
+        <path d="M49 30 C40 38 32 47 31 58 C30 67 36 71 42 64 C48 57 51 43 55 31Z" fill="url(#jrTail)" stroke="#a64d70" stroke-width="1.1"/>
+        <path d="M63 30 C72 38 80 47 81 58 C82 67 76 71 70 64 C64 57 61 43 57 31Z" fill="url(#jrTail)" stroke="#a64d70" stroke-width="1.1"/>
+        <path d="M51 27 C33 13 16 13 10 20 M61 27 C79 13 96 13 102 20" fill="none" stroke="#fff0f4" stroke-width="2.1" stroke-linecap="round" opacity=".9"/>
+        <path d="M53 25 C49 20 49 29 54 32 C59 35 64 29 60 24 C58 21 55 22 53 25Z" fill="url(#jrSatin)" stroke="#a64d70" stroke-width="1.2"/>
+        <path d="M54 24 Q57 28 60 30 M39 39 Q34 49 35 58 M73 39 Q78 49 77 58" fill="none" stroke="#ffeaf0" stroke-width="1.5" stroke-linecap="round" opacity=".85"/>
+      </g>
+    </svg>`;
+  }
+  // Window centering and dragging are handled by the final interaction patch.
+})();
+</script>
+
+<!-- Shared journal opening and handwriting-colour conflict fixes -->
+<style id="shared-journal-opening-position-performance-fix">
+  #sharedJournalWindow.is-journal-dragging { will-change: left, top; }
+</style>
+<script id="shared-journal-single-ink-controller">
+(function(){
+  const win=document.getElementById('sharedJournalWindow');
+  const left=document.getElementById('journalWritingLeft');
+  const right=document.getElementById('journalWritingRight');
+  const picker=document.getElementById('journalFontColor');
+  if(!win||!left||!right||!picker)return;
+  const editors=[left,right];
+  const colorKey='sharedJournalFontColor';
+  const pageKey='sharedJournalPageInk:';
+  let activeEditor=right;
+  let rememberedRange=null;
+  let currentColor='#765564';
+  try{currentColor=localStorage.getItem(colorKey)||currentColor;}catch(_){}
+  picker.value=currentColor;
+
+  const pageNumber=editor=>{
+    const spread=Math.max(0,Number(win.dataset.currentSpread||0));
+    return spread*2+(editor===left?1:2);
+  };
+  const rememberSelection=()=>{
+    const selection=window.getSelection();
+    if(!selection||!selection.rangeCount)return;
+    const node=selection.anchorNode;
+    const editor=editors.find(item=>node&&(item===node||item.contains(node)));
+    if(editor){
+      activeEditor=editor;
+      rememberedRange=selection.getRangeAt(0).cloneRange();
+    }
+  };
+  document.addEventListener('selectionchange',rememberSelection);
+  editors.forEach(editor=>{
+    editor.addEventListener('focus',()=>{activeEditor=editor;});
+    editor.addEventListener('pointerup',rememberSelection);
+    editor.addEventListener('keyup',rememberSelection);
+  });
+
+  const restoreSelection=editor=>{
+    const selection=window.getSelection();
+    if(!selection)return false;
+    if(rememberedRange && editor.contains(rememberedRange.commonAncestorContainer)){
+      try{selection.removeAllRanges();selection.addRange(rememberedRange);return true;}catch(_){}
+    }
+    const range=document.createRange();
+    range.selectNodeContents(editor);range.collapse(false);
+    selection.removeAllRanges();selection.addRange(range);
+    return true;
+  };
+  const applyColor=color=>{
+    if(!/^#[0-9a-f]{6}$/i.test(color))return;
+    currentColor=color.toLowerCase();
+    picker.value=currentColor;
+    try{localStorage.setItem(colorKey,currentColor);}catch(_){}
+
+    const editor=activeEditor||right;
+    const number=pageNumber(editor);
+    // A page's default ink changes only while the page is empty. Existing
+    // handwritten text keeps its own colour; a saved selection/caret receives
+    // the newly chosen colour through an inline span.
+    if(!editor.textContent.trim()){
+      editor.style.setProperty('--page-ink',currentColor);
+      try{localStorage.setItem(pageKey+number,currentColor);}catch(_){}
+    }
+
+    editor.focus({preventScroll:true});
+    restoreSelection(editor);
+    try{
+      document.execCommand('styleWithCSS',false,true);
+      document.execCommand('foreColor',false,currentColor);
+    }catch(_){}
+    editor.dispatchEvent(new Event('input',{bubbles:true}));
+    // Keep tracking the caret/selection while the native colour picker emits
+    // multiple input events during one drag gesture.
+    rememberSelection();
+  };
+
+  // Own picker events before the legacy handlers. This prevents the page-default
+  // and rich-text colour systems from racing each other.
+  document.addEventListener('input',event=>{
+    if(event.target!==picker)return;
+    event.stopImmediatePropagation();
+    applyColor(picker.value);
+  },true);
+  document.addEventListener('click',event=>{
+    const swatch=event.target&&event.target.closest&&event.target.closest('#journalSettingsDrawer [data-journal-color]');
+    if(!swatch)return;
+    event.preventDefault();event.stopImmediatePropagation();
+    applyColor(swatch.getAttribute('data-journal-color'));
+  },true);
+
+  win.addEventListener('sharedjournalspreadchange',()=>{
+    editors.forEach(editor=>{
+      const number=pageNumber(editor);
+      let saved=null;
+      try{saved=localStorage.getItem(pageKey+number);}catch(_){}
+      if(saved && !editor.textContent.trim())editor.style.setProperty('--page-ink',saved);
+      else if(!saved && !editor.textContent.trim())editor.style.setProperty('--page-ink',currentColor);
+    });
+  });
+  win.addEventListener('focusin',event=>{
+    if(!editors.includes(event.target))return;
+    activeEditor=event.target;
+    if(!event.target.textContent.trim()){
+      const number=pageNumber(event.target);
+      let saved=null;
+      try{saved=localStorage.getItem(pageKey+number);}catch(_){}
+      event.target.style.setProperty('--page-ink',saved||currentColor);
+    }
+  });
+})();
+</script>
+
+
+
+<!-- Shared journal: viewport-centering and minimize/restore layout correction -->
+<style id="shared-journal-viewport-position-correction">
+  /* The old late rule forced the journal back to position:relative. These
+     state-specific ID rules deliberately outrank it and the generic window rule. */
+  #sharedJournalWindow.shared-journal-centered,
+  #sharedJournalWindow.shared-journal-user-positioned {
+    position:fixed!important;right:auto!important;bottom:auto!important;margin:0!important;
+  }
+  #sharedJournalWindow.shared-journal-centered {
+    left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;
+  }
+  #sharedJournalWindow.shared-journal-user-positioned {
+    transform:none!important;
+  }
+  /* Allow the minimize transform to work even while either positioning state
+     is active. The class is removed as soon as the window is hidden. */
+  #sharedJournalWindow.shared-journal-minimizing {
+    transform:var(--journal-minimize-transform,none)!important;
+  }
+</style>
+<script id="shared-journal-viewport-position-controller">
+(function(){
+  const win=document.getElementById('sharedJournalWindow');
+  if(!win||typeof window.openSharedJournal!=='function')return;
+
+  // Use the same viewport-centering model as the other desktop windows, but
+  // keep it explicit so the journal's legacy position:relative override cannot
+  // turn 50%/50% into an offset from its parent container.
+  const originalOpen=window.openSharedJournal;
+  window.openSharedJournal=async function(){
+    if(win.dataset.journalUserPositioned==='true'){
+      win.classList.remove('shared-journal-centered');
+      win.classList.add('shared-journal-user-positioned');
+    }else{
+      win.classList.remove('shared-journal-user-positioned');
+      win.classList.add('shared-journal-centered');
+    }
+    // The original opener's one-time helper measures and writes pixel offsets.
+    // Mark the layout initialized here; CSS now owns the centered position.
+    win.dataset.initialized='true';
+    return originalOpen.apply(this,arguments);
+  };
+
+  // If the user has not dragged the journal, it remains truly centered on
+  // viewport resizes. A dragged window keeps its chosen position and is clamped.
+  window.addEventListener('resize',()=>{
+    if(win.style.display==='none'||win.classList.contains('minimized'))return;
+    if(win.dataset.journalUserPositioned==='true'){
+      const r=win.getBoundingClientRect();
+      const left=Math.max(0,Math.min(window.innerWidth-win.offsetWidth,r.left));
+      const top=Math.max(0,Math.min(window.innerHeight-48,r.top));
+      win.style.left=left+'px';win.style.top=top+'px';
+    }
+  });
+})();
+</script>
+
+<!-- Journal minimize positioning guard: keep the animation in viewport coordinates. -->
+<style id="shared-journal-minimize-fixed-position-guard">
+  /* A legacy !important relative-position rule otherwise wins when the
+     centered class is removed, interpreting the saved viewport coordinates
+     relative to the desktop container and snapping the window toward its corner. */
+  #sharedJournalWindow.shared-journal-minimizing {
+    position: fixed !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    transform: var(--journal-minimize-transform, none) !important;
+    transform-origin: center center !important;
+  }
+</style>
+
+
+<!-- Final Journal minimize fix: preserve layout; animate only the transform. -->
+<style id="shared-journal-minimize-layout-preserving-fix">
+  /* Keep the window's real layout coordinates untouched during minimization.
+     The centered and user-positioned states remain in place; only the visual
+     transform changes, so no viewport/local-coordinate conversion can occur. */
+  #sharedJournalWindow.shared-journal-minimizing.shared-journal-centered {
+    position:fixed!important;
+    transform:translate(-50%,-50%) translate(var(--journal-dock-x,0px),var(--journal-dock-y,0px)) scale(.05)!important;
+    transform-origin:center center!important;
+  }
+  #sharedJournalWindow.shared-journal-minimizing.shared-journal-user-positioned {
+    position:fixed!important;
+    transform:translate(var(--journal-dock-x,0px),var(--journal-dock-y,0px)) scale(.05)!important;
+    transform-origin:center center!important;
+  }
+  #sharedJournalWindow.shared-journal-minimizing {
+    transition:transform .36s cubic-bezier(.22,.75,.25,1),opacity .30s ease!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+</style>
+<script id="shared-journal-minimize-layout-preserving-controller">
+(function(){
+  const win=document.getElementById('sharedJournalWindow');
+  const taskbar=document.getElementById('taskbarSharedJournal');
+  if(!win || !taskbar || typeof window.openSharedJournal!=='function') return;
+
+  let finishTimer=null;
+  let minimizing=false;
+  const previousOpen=window.openSharedJournal;
+  const previousClose=window.closeSharedJournal;
+
+  function clearDockAnimation(restoreVisibility){
+    if(finishTimer){clearTimeout(finishTimer);finishTimer=null;}
+    minimizing=false;
+    win.classList.remove('shared-journal-minimizing','minimized');
+    win.style.removeProperty('--journal-dock-x');
+    win.style.removeProperty('--journal-dock-y');
+    win.style.removeProperty('--journal-minimize-transform');
+    if(restoreVisibility) win.style.display='flex';
+  }
+
+  // Opening from the taskbar during the animation cancels it cleanly. The
+  // original opener then handles cloud loading, focus and normal open behavior.
+  window.openSharedJournal=async function(){
+    const wasAnimating=minimizing || win.classList.contains('minimized') || win.classList.contains('shared-journal-minimizing');
+    if(wasAnimating) clearDockAnimation(true);
+    return previousOpen.apply(this,arguments);
+  };
+
+  window.minimizeSharedJournal=function(){
+    if(minimizing || win.style.display==='none' || win.classList.contains('minimized')) return;
+    const dock=document.getElementById('taskbarSharedJournal');
+    if(!dock){win.style.display='none';return;}
+
+    // Ensure one stable positioning mode, but never rewrite position/left/top.
+    if(!win.classList.contains('shared-journal-centered') && !win.classList.contains('shared-journal-user-positioned')){
+      if(win.dataset.journalUserPositioned==='true') win.classList.add('shared-journal-user-positioned');
+      else win.classList.add('shared-journal-centered');
+    }
+
+    if(typeof flushVisibleSaves==='function') flushVisibleSaves();
+    const from=win.getBoundingClientRect();
+    const to=dock.getBoundingClientRect();
+    const dx=(to.left+to.width/2)-(from.left+from.width/2);
+    const dy=(to.top+to.height/2)-(from.top+from.height/2);
+
+    minimizing=true;
+    win.style.setProperty('--journal-dock-x',dx+'px');
+    win.style.setProperty('--journal-dock-y',dy+'px');
+    // Start from the current rendered state, then let the CSS transform move
+    // the window. Crucially, its positioning classes and layout coordinates
+    // are not removed or rewritten.
+    win.classList.add('shared-journal-minimizing','minimized');
+    if(finishTimer) clearTimeout(finishTimer);
+    finishTimer=setTimeout(function(){
+      finishTimer=null;
+      win.style.display='none';
+      win.classList.remove('shared-journal-minimizing','minimized');
+      win.style.removeProperty('--journal-dock-x');
+      win.style.removeProperty('--journal-dock-y');
+      win.style.removeProperty('--journal-minimize-transform');
+      minimizing=false;
+    },390);
+  };
+
+  window.closeSharedJournal=function(){
+    clearDockAnimation(false);
+    if(typeof previousClose==='function') return previousClose.apply(this,arguments);
+  };
+})();
+</script>
