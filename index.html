@@ -5230,6 +5230,52 @@ html body .deep-thoughts-release-btn:disabled {
 }
 </style>
 
+
+
+<style id="samsung-android-tablet-adaptation">
+/* Android tablet: use the real visible viewport and reserve space for the taskbar. */
+.desktop-container{height:100vh;height:100dvh;width:100vw;width:100dvw;}
+@media (min-width:600px) and (max-width:1200px), (pointer:coarse) and (min-width:600px){
+  html,body{width:100%;height:100%;min-height:100%;overflow:hidden;overscroll-behavior:none;}
+  .desktop-container{position:fixed;inset:0;width:100%;height:100vh;height:100dvh;min-height:0;overflow:hidden;padding-bottom:env(safe-area-inset-bottom,0px);}
+  .desktop-wallpaper{inset:0;width:100%;height:100%;}
+  .desktop-taskbar{position:absolute!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;height:58px!important;min-height:58px!important;box-sizing:border-box!important;padding:4px 8px calc(4px + env(safe-area-inset-bottom,0px))!important;z-index:900!important;gap:6px!important;}
+  .taskbar-left-group{min-width:0!important;flex:1 1 auto!important;gap:5px!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch;}
+  .taskbar-left-group::-webkit-scrollbar{display:none!important;}
+  .taskbar-tray{flex:0 0 auto!important;min-width:max-content!important;max-width:48vw!important;gap:5px!important;}
+  .desktop-taskbar button,.desktop-taskbar .taskbar-icon-btn,.desktop-taskbar .taskbar-start-btn{min-width:42px;min-height:42px;touch-action:manipulation;}
+  .desktop-taskbar .desktop-search-wrap{max-width:clamp(90px,19vw,210px)!important;}
+  .desktop-taskbar #desktopAppSearch{min-width:0!important;width:100%!important;}
+  .desktop-icons-area{top:clamp(12px,2.5vh,25px)!important;left:clamp(12px,2.5vw,25px)!important;grid-template-columns:repeat(4,minmax(66px,88px))!important;column-gap:clamp(8px,1.8vw,20px)!important;row-gap:clamp(10px,2vh,20px)!important;max-height:calc(100% - 82px)!important;overflow-y:auto!important;overscroll-behavior:contain;}
+  .desktop-icon{width:100%!important;min-width:0!important;touch-action:manipulation;}
+  .desktop-icon img,.desktop-icon svg{max-width:100%;}
+  .daily-checkin-window,.pomodoro-window,.music-window,.deep-thoughts-window,.sticky-notes-window,.comfort-window,.mini-game-window,.shared-journal-window{max-width:calc(100vw - 24px)!important;max-height:calc(100dvh - 82px - env(safe-area-inset-bottom,0px))!important;box-sizing:border-box;}
+  .daily-checkin-window,.pomodoro-window,.music-window,.deep-thoughts-window,.sticky-notes-window,.comfort-window,.mini-game-window,.shared-journal-window{overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+  .window-titlebar,[id$="Titlebar"],#windowTitlebar{touch-action:none;user-select:none;-webkit-user-select:none;}
+  .window-controls button,.window-btn{min-width:38px!important;min-height:38px!important;touch-action:manipulation;}
+  input,textarea,select,button{font-size:16px;}
+  .desktop-taskbar #clockDisplay{white-space:nowrap!important;}
+}
+@media (orientation:landscape) and (min-width:600px) and (max-width:1200px){
+  .desktop-icons-area{grid-template-columns:repeat(4,minmax(68px,86px))!important;}
+  .desktop-taskbar .taskbar-tray{max-width:42vw!important;}
+  .shared-journal-window{width:min(820px,calc(100vw - 30px))!important;height:min(650px,calc(100dvh - 82px))!important;}
+  .mini-game-window{width:min(760px,calc(100vw - 30px))!important;height:min(590px,calc(100dvh - 82px))!important;}
+}
+@media (orientation:portrait) and (min-width:600px) and (max-width:1200px){
+  .desktop-icons-area{grid-template-columns:repeat(3,minmax(68px,82px))!important;}
+  .desktop-taskbar{padding-left:5px!important;padding-right:5px!important;}
+  .desktop-taskbar .desktop-search-wrap{max-width:105px!important;}
+  .desktop-taskbar .taskbar-tray{max-width:46vw!important;}
+  .shared-journal-window,.mini-game-window{width:calc(100vw - 20px)!important;height:calc(100dvh - 82px)!important;}
+}
+@media (pointer:coarse){
+  button,a,[role="button"],.desktop-icon,.taskbar-icon-btn{ -webkit-tap-highlight-color:transparent;touch-action:manipulation; }
+  .desktop-container{ -webkit-user-select:none;user-select:none; }
+  input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:text;}
+}
+</style>
+
 </head>
 <body>
 
@@ -7396,6 +7442,9 @@ html body .deep-thoughts-release-btn:disabled {
             }
 
             audioElement = cachedAudio;
+            // Apply the player's repeat setting to the active media element.
+            // Native audio looping restarts this same song instead of advancing the playlist.
+            audioElement.loop = isLooping;
             activeTrackUrl = track.url;
             audioRetryCount.set(activeTrackUrl, 0);
             audioElement.muted = isAllSoundsMuted;
@@ -7566,6 +7615,8 @@ html body .deep-thoughts-release-btn:disabled {
 
         function toggleLoop() {
             isLooping = !isLooping;
+            // Update immediately so enabling/disabling repeat mid-song takes effect.
+            if (audioElement) audioElement.loop = isLooping;
             const loopBtn = document.getElementById('musicLoopBtn');
             loopBtn.classList.toggle('active', isLooping);
             loopBtn.classList.remove('spin-once');
@@ -11567,6 +11618,44 @@ html body .deep-thoughts-release-btn:disabled {
 .desktop-container.theme-rose .desktop-taskbar .tray-line-icon::before,
 .desktop-container.theme-rose .desktop-taskbar .tray-line-icon::after { border-color:#c1ad8d!important; }
 </style>
+
+<script id="android-tablet-legacy-drag-bridge">
+(()=>{
+  if(!('PointerEvent' in window)) return;
+  let lastTouch=0;
+  const makeMouse=(type,p)=>{
+    const target=p.target && p.target.dispatchEvent ? p.target : document;
+    const ev=new MouseEvent(type,{bubbles:true,cancelable:true,view:window,clientX:p.clientX,clientY:p.clientY,screenX:p.screenX,screenY:p.screenY,button:0,buttons:type==='mouseup'?0:1});
+    target.dispatchEvent(ev);
+  };
+  document.addEventListener('pointerdown',e=>{
+    if(e.pointerType!=='touch') return;
+    lastTouch=Date.now();
+    makeMouse('mousedown',e);
+  },{capture:true,passive:true});
+  document.addEventListener('pointermove',e=>{
+    if(e.pointerType!=='touch'||!e.buttons) return;
+    lastTouch=Date.now();
+    makeMouse('mousemove',e);
+  },{capture:true,passive:true});
+  const finish=e=>{if(e.pointerType!=='touch')return;lastTouch=Date.now();makeMouse('mouseup',e);};
+  document.addEventListener('pointerup',finish,{capture:true,passive:true});
+  document.addEventListener('pointercancel',finish,{capture:true,passive:true});
+  // Ignore the duplicate compatibility mouse events emitted by Chromium after a touch gesture.
+  ['mousedown','mousemove','mouseup'].forEach(type=>document.addEventListener(type,e=>{
+    if(e.isTrusted && Date.now()-lastTouch<900){e.stopImmediatePropagation();e.preventDefault();}
+  },true));
+  const updateViewport=()=>{
+    const vv=window.visualViewport;
+    const h=vv?vv.height:window.innerHeight;
+    document.documentElement.style.setProperty('--tablet-visible-height',Math.round(h)+'px');
+  };
+  updateViewport();
+  window.addEventListener('resize',updateViewport,{passive:true});
+  window.visualViewport?.addEventListener('resize',updateViewport,{passive:true});
+})();
+</script>
+
 </body>
 </html>
 
@@ -12456,6 +12545,3 @@ html body .deep-thoughts-release-btn:disabled {
   };
 })();
 </script>
-
-</body>
-</html>
